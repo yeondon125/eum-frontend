@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #bcc0ff;
   color: #ccc;
   display: flex;
@@ -25,6 +25,7 @@ body {
 }
 
 .input-group {
+  /* 포지션? */
   position: relative;
   margin-bottom: 20px;
 }
@@ -72,10 +73,12 @@ button {
 .signup {
   margin-top: 20px;
   font-size: 14px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .signup a {
-  color: rgb(183, 205, 243);
+  color: #bfc3cf;
   text-decoration: underline;
 }
 
