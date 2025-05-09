@@ -17,7 +17,7 @@ body {
   text-align: start;
 }
 
-.login-container img {
+.logo img {
   width: 5rem;
   height: 5.2rem;
 }
@@ -26,15 +26,15 @@ body {
 }
 
 .input-group {
-  /* 포지션? */
   position: relative;
   margin-bottom: 20px;
   border-radius: 0.7rem;
 }
 
 .input-group input {
+  box-sizing: border-box;
   width: 100%;
-  padding: 12px 0px;
+  padding: 12px 100px 12px 50px;
   border: none;
   border-radius: 8px;
   background-color: #bccdff;
@@ -48,6 +48,33 @@ body {
   top: 50%;
   transform: translateY(-50%);
   color: #888;
+}
+
+.lock {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.fa-user {
+  color: #1a306d;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fa-eye {
+  color: #1a306d;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .link {

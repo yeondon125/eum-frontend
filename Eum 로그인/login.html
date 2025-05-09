@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eum 로그인</title>
+    <link rel="stylesheet" href="login.css" />
     <link
       rel="stylesheet"
-      href="login.css"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
     <script type="text/javascript" src="login.js"></script>
@@ -18,12 +18,15 @@
       </div>
       <form>
         <div class="input-group">
+          <i class="fa-solid fa-user"></i>
           <input type="text" id="email" />
           <span class="domain">@gsm.hs.kr</span>
         </div>
 
         <div class="input-group">
+          <img src="/Eum 로그인/image/lock.png" class="lock" alt="lock" />
           <input type="password" id="password" />
+          <i class="fa-regular fa-eye"></i>
         </div>
 
         <button onclick="login()">로그인</button>
