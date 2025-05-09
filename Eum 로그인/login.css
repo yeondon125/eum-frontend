@@ -1,6 +1,6 @@
 body {
   /* margin: 0; */
-  font-family: "Arial", sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #bcc0ff;
   color: #ccc;
   display: flex;
@@ -124,4 +124,31 @@ button {
   font-size: 12px;
   margin-top: 5px;
   display: none;
+}
+
+.input-group {
+  position: relative;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #444;
+  cursor: pointer;
+}
+
+.fa-eye,
+.fa-eye-slash {
+  color: #1a306d;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  text-align: center;
 }

@@ -1,13 +1,29 @@
 function login() {
-  var userId = document.getElementById('user-id').value;
-  var userPassword = document.getElementById('user-password').value;
-  var errorMessage = document.getElementById('error-message');
+  const id = document.getElementById('email').value;
+  const pw = document.getElementById('password').value;
 
-  if (userId === '' || userPassword === '') {
-    //password안보이게하기
-    errorMessage.style.display = 'block'; // 경고 메시지 표시하는거거
+  if (!id && !pw) {
+    alert('아이디와 비밀번호를 입력해주세요!');
+  } else if (!id) {
+    alert('아이디를 입력해주세요!');
+  } else if (!pw) {
+    alert('비밀번호를 입력해주세요!');
   } else {
-    errorMessage.style.display = 'none'; // 경고 메시지 숨기는거
     alert('로그인 성공!');
   }
 }
+
+// 비밀번호 보기/숨기기 기능
+document.addEventListener('DOMContentLoaded', () => {
+  const pwInput = document.getElementById('password');
+  const toggleBtn = document.getElementById('togglePw');
+
+  toggleBtn.addEventListener('click', () => {
+    const isHidden = pwInput.type === 'password';
+    pwInput.type = isHidden ? 'text' : 'password';
+
+    // 아이콘 모양 바꾸기
+    toggleBtn.classList.toggle('fa-eye');
+    toggleBtn.classList.toggle('fa-eye-slash');
+  });
+});
