@@ -4,21 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eum 로그인</title>
-    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="stylesheet"
+      href="login.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <script type="text/javascript" src="login.js"></script>
   </head>
   <body>
     <div class="login-container">
-      <!-- 이미지로 변경 -->
-      <div class="logo">Eum</div>
-      <!-- 이미지로 변경 -->
+      <div class="logo">
+        <img src="/Eum 로그인/image/eum.png" alt="logo" />
+      </div>
       <form>
         <div class="input-group">
-          <input type="text" id="email" placeholder="아이디" />
+          <input type="text" id="email" />
           <span class="domain">@gsm.hs.kr</span>
         </div>
+
         <div class="input-group">
-          <input type="password" id="password" placeholder="비밀번호" />
+          <input type="password" id="password" />
         </div>
 
         <button onclick="login()">로그인</button>
