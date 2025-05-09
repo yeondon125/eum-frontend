@@ -13,7 +13,6 @@ function login() {
   }
 }
 
-// 비밀번호 보기/숨기기 기능
 document.addEventListener('DOMContentLoaded', () => {
   const pwInput = document.getElementById('password');
   const toggleBtn = document.getElementById('togglePw');
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const isHidden = pwInput.type === 'password';
     pwInput.type = isHidden ? 'text' : 'password';
 
-    // 아이콘 모양 바꾸기
     toggleBtn.classList.toggle('fa-eye');
     toggleBtn.classList.toggle('fa-eye-slash');
   });
