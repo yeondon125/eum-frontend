@@ -99,3 +99,25 @@ body {
   margin-bottom: clamp(30px, 4vh, 80px);
   flex-shrink: 0;
 }
+
+.explanation {
+  position: relative;
+}
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 5.3vw;
+  height: 5.3vw;
+  border-radius: 50%;
+  background-color: #1a306d;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+
+.fa-file {
+  font-size: 2.6vw;
+  color: white;
+}
