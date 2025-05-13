@@ -49,13 +49,13 @@ body {
 }
 
 .acquisition {
-  color: #f2f3ff;
-}
-
-.lost {
   background-color: #f2f3ff;
   color: #1a306d;
   border-radius: 3rem;
+}
+
+.lost {
+  color: #f2f3ff;
 }
 
 .lostname input {
