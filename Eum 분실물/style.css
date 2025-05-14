@@ -60,7 +60,7 @@ body {
 
 .lostname input {
   width: 46.6vw;
-  height: clamp(50px, 4.17vw, 80px);
+  height: clamp(50px, 4.17vw, 60px);
   border-radius: 1.5rem;
   border: 0;
   padding: 0rem 1rem;
@@ -71,7 +71,7 @@ body {
 
 .explanation textarea {
   width: 46.6vw;
-  height: clamp(200px, 26vw, 350px);
+  height: clamp(200px, 26vw, 325px);
   border-radius: 1.5rem;
   border: 0;
   padding: 0.65vw 1.3vw;
@@ -85,7 +85,7 @@ body {
 
 .btn {
   width: 46.6vw;
-  height: clamp(50px, 4.17vw, 80px);
+  height: clamp(50px, 4.17vw, 60px);
   border-radius: 1.5rem;
   border: 0;
   padding: 0rem 1.3vw;
@@ -96,7 +96,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: clamp(30px, 4vh, 80px);
+
   flex-shrink: 0;
 }
 
