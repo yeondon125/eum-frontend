@@ -100,6 +100,24 @@ body {
   flex-shrink: 0;
 }
 
+.btn-active {
+  width: 46.6vw;
+  height: clamp(50px, 4.17vw, 60px);
+  border-radius: 1.5rem;
+  border: 0;
+  padding: 0rem 1.3vw;
+  font-size: clamp(14px, 1.6vw, 24px);
+
+  color: #ffffff;
+  background-color: #3b43dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 .explanation {
   position: relative;
 }

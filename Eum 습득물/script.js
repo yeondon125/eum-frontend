@@ -2,22 +2,31 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("photo").addEventListener("click", function () {
     document.getElementById("fileInput").click();
   });
-});
 
-function checkInputs() {
   const inputs = document.getElementsByClassName("input");
+  const btn = document.getElementById("btn");
 
-  let allFilled = true;
+  function checkInputs() {
+    let allFilled = true;
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].value.trim() === "") {
+        allFilled = false;
+        break;
+      }
+    }
 
-  for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].value.trim() === "") {
-      allFilled = false;
-      break;
+    if (allFilled) {
+      btn.classList.remove("btn");
+      btn.classList.add("btn-active");
+    } else {
+      btn.classList.remove("btn-active");
+      btn.classList.add("btn");
     }
   }
 
-  if (allFilled) {
-    document.getElementById("btn").
-  } 
-}
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener("input", checkInputs);
+  }
 
+  checkInputs();
+});
