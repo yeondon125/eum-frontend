@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* 로그인 컨테이너 박스 */
+.login-container {
+  width: 333px;
+  height: 363px;
+  top: 223px;
+  left: 553px;
+  border-radius: 70px;
+  opacity: 0.9;
+  background-color: rgba(186, 204, 255, 1);
+}
+
+/* 로고 이미지 */
+.logo {
+  margin-bottom: 2px;
+}
+
+.logo img {
+  width: 5rem;
+  height: auto;
+  position: relative;
+  left: 20px;
+  top: 25px;
+}
+
+/* 입력 그룹 전체 */
+.input-group {
+  margin-bottom: 2px;
+  position: relative;
+  top: 20px;
+  width: 280px;
+  left: 25px;
+}
+
+/* 입력창 라벨 */
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* 텍스트 입력창 */
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color: rgba(186, 204, 255, 1);
+}
+
+/* 다음 버튼 */
+.submit-button {
+  width: 75%;
+  padding: 12px;
+  background-color: #4040ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 2.5rem;
+  position: relative;
+  left: 40px;
+  bottom: 9px;
+}
+
+/* 로그인 링크 */
+.login-link {
+  text-align: center;
+  margin-top: 1px;
+}
+
+.login-link a {
+  color: rgba(59, 59, 59, 1);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.submit-button:disabled {
+  background-color: rgba(178, 178, 178, 1); /* 비활성화 시 회색 */
+  cursor: not-allowed;
+}
+
+.domain {
+  position: absolute;
+  right: 14px;
+  top: 69%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.fa-eye {
+  position: absolute;
+  right: 23px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #1a306d;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  z-index: 2;
+}
+
+#togglePw {
+  position: absolute;
+  top: 56%;
+  right: 14px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #1a306d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 9px;
+  margin-top: 5px;
+  visibility: hidden;
+  height: 16px; /* 고정 높이로 공간 유지 */
+  opacity: 0; /* 처음엔 안 보이게 */
+  transition: opacity 0.2s ease;
+}
+
+.error-message.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.input-error {
+  border: 1px solid red;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EUM 회원가입</title>
+    <link rel="stylesheet" href="join2.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="login-container">
+      <div class="logo">
+        <img src="Eum 로그인.png" alt="logo" />
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="username">학교 이메일</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="학교 이메일을 설정해주세요"
+        />
+        <span class="domain">@gsm.hs.kr</span>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="student-id">비밀번호 설정</label>
+        <input
+          type="password"
+          id="student-id"
+          placeholder="설정하실 비밀번호를 입력해주세요"
+        />
+        <i id="togglePw" class="fa-regular fa-eye"></i>
+        <span id="student-id-error" class="error-message">
+          8~20자 이내로 영어,숫자,특수문자(~,?,!,@,$)의 조합으로
+          입력해주세요</span
+        >
+      </div>
+
+      <button class="submit-button">회원가입</button>
+
+      <div class="login-link">
+        <a
+          href="http://127.0.0.1:5500/Eum%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20(%EC%B5%9C%EC%A2%85)/login2.html"
+          >로그인></a
+        >
+      </div>
+    </div>
+    <script src="join2.js"></script>
+  </body>
+</html>

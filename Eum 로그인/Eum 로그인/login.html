@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eum 로그인</title>
+    <link rel="stylesheet" href="login2.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo">
+        <img src="Eum 로그인.png" alt="logo" />
+      </div>
+      <form>
+        <!-- 아이디 입력 그룹 -->
+        <div class="input-group">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" id="email" placeholder="아이디 입력" />
+          <span class="domain">@gsm.hs.kr</span>
+        </div>
+
+        <!-- 비밀번호 입력 그룹 -->
+        <div class="input-group password">
+          <img src="lock.png" class="lock" alt="lock" />
+          <input type="password" id="password" placeholder="비밀번호 입력" />
+          <i id="togglePw" class="fa-regular fa-eye"></i>
+          <div id="error-message" class="error-message">
+            올바르지 않은 이메일 또는 비밀번호입니다.
+          </div>
+        </div>
+
+        <button id="login-btn" onclick="login()">로그인</button>
+
+        <!-- 회원가입 링크 -->
+        <div class="signup">
+          <a
+            href="http://127.0.0.1:5500/Eum%20%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85/join.html"
+            >회원가입></a
+          >
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript" src="login2.js"></script>
+  </body>
+</html>

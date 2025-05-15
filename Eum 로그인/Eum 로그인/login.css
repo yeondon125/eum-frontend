@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: white;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  width: 333px;
+  height: 296px;
+  top: 257px;
+  left: 553px;
+  border-radius: 70px;
+  opacity: 0.9;
+  background-color: #baccff;
+}
+
+.logo img {
+  width: 5rem;
+  height: 5.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  left: 22px;
+  top: 25px;
+}
+
+/* 공통 input 그룹 스타일 */
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 40px;
+  right: 13px;
+}
+
+.input-group input {
+  border: 1px solid black;
+  padding: 10px 2.5rem 10px 2.5rem; /* 왼쪽 아이콘, 오른쪽 아이콘 모두 위한 패딩 */
+  border-radius: 5px;
+  outline: none;
+  width: 95%;
+  box-sizing: border-box;
+  font-size: 12px;
+  background-color: #baccff;
+  height: 36px; /* ← 높이 고정 */
+  line-height: 1; /* ← 줄 높이 줄이기 */
+}
+
+/* 왼쪽 아이콘들 (fa-user, lock 이미지) */
+.fa-user,
+.lock {
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  color: #151b2d;
+  line-height: 20px;
+  pointer-events: auto;
+  background: transparent;
+  border: none;
+}
+
+/* 눈 아이콘 */
+.fa-eye {
+  position: absolute;
+  right: 23px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #1a306d;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  z-index: 2;
+}
+
+/* 도메인 텍스트 */
+.domain {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+/* 로그인 버튼 */
+
+button {
+  width: 258px;
+  height: 36px;
+  position: relative;
+  top: 4px;
+  left: 36px;
+  border: none;
+  border-radius: 9px;
+  background-color: rgba(59, 67, 220, 1);
+  color: white;
+  margin-top: 0.5rem;
+}
+
+.login-button:hover {
+  background-color: #2f35b5;
+}
+
+/* 회원가입 링크 */
+.signup {
+  margin-top: 0.625rem;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.signup a {
+  color: rgba(59, 59, 59, 1);
+  text-decoration: none;
+}
+
+#togglePw {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #1a306d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-message {
+  display: none;
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-left: 4px;
+  height: 20px;
+  position: absolute;
+  top: 100%;
+}
+
+.input-error {
+  border: 1px solid red !important;
+}
+
+button:disabled {
+  background-color: rgba(178, 178, 178, 1) !important;
+  cursor: not-allowed;
+}
