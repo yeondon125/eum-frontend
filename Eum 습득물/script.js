@@ -3,16 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("photo").addEventListener("click", function () {
     document.getElementById("fileInput").click();
   });
-  //버튼 택스트 클릭시 함수호출출
-  document.getElementById("btn-active").addEventListener("click", function () {
-    document.getElementById("start").click();
-  });
+
+  //버튼 택스트 클릭시 함수호출
   document
-    .getElementById("start")
-    .click()
+    .getElementById("btn-active")
     .addEventListener("click", function () {});
 
-  //input값 검사와 버튼 디자인 변경경
+  //input값 검사와 버튼 디자인 변경
   const inputs = document.getElementsByClassName("input");
   const btn = document.getElementById("btn");
 
@@ -39,4 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   checkInputs();
+
+  //이미지 미리보기
 });
