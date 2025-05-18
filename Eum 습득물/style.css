@@ -70,7 +70,7 @@ body {
 }
 
 .lostname input {
-  width: 42.6vw;
+  width: 41.6vw;
   height: clamp(50px, 4.17vw, 57px);
   border-radius: 1.5rem;
 
@@ -93,13 +93,16 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
+
+  position: relative;
 }
+
 .explanation textarea {
-  width: 42.6vw;
+  width: 41.6vw;
   height: clamp(200px, 26vw, 365px);
   border-radius: 1.5rem;
 
-  padding: 0.65vw 1.3vw;
+  padding: 0.85vw 1.3vw;
   margin: 0;
   font-family: "Pretendard Variable", sans-serif;
   font-style: Pretendard Variable, sans-serif;
@@ -109,11 +112,19 @@ body {
   color: #939baf;
 }
 
-#previwe {
+#preview {
+  position: absolute;
+  bottom: 50px; /* 원하는 위치로 조정 */
+  left: 30px; /* 원하는 위치로 조정 */
+  width: clamp(auto, auto, 310px);
+  height: 12vw;
+  border-radius: 8px;
+  z-index: 2;
+  display: none;
 }
 
 .btn {
-  width: 42.6vw;
+  width: 41.6vw;
   height: clamp(50px, 4.17vw, 55px);
   border-radius: 1.5rem;
   border: 0;
@@ -130,7 +141,7 @@ body {
 }
 
 .btn-active {
-  width: 42.6vw;
+  width: 41.6vw;
   height: clamp(50px, 4.17vw, 60px);
   border-radius: 1.5rem;
   border: 0;
