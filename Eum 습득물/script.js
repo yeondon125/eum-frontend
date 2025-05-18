@@ -1,41 +1,55 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //포토를 클릭시 파일을 선택할 수 있도록 설정
+  // 포토 클릭 시 파일 선택
   document.getElementById("photo").addEventListener("click", function () {
     document.getElementById("fileInput").click();
   });
 
-  //버튼 택스트 클릭시 함수호출
-  document
-    .getElementById("btn-active")
-    .addEventListener("click", function () {});
-
-  //input값 검사와 버튼 디자인 변경
-  const inputs = document.getElementsByClassName("input");
-  const btn = document.getElementById("btn");
+  const input1 = document.querySelector(".lostname input"); // 습득물명 input
+  const input2 = document.querySelector(".explanation textarea"); // 설명 textarea
+  const max1 = document.getElementById("max1");
+  const max2 = document.getElementById("max2");
 
   function checkInputs() {
-    let allFilled = true;
-    for (let i = 0; i < inputs.length; i++) {
-      if (inputs[i].value.trim() === "") {
-        allFilled = false;
-        break;
-      }
-    }
-
-    if (allFilled) {
-      btn.classList.remove("btn");
-      btn.classList.add("btn-active");
+    // input1: 최대 32자
+    if (input1.value.trim().length > 32) {
+      max1.classList.remove("max-on");
+      max1.classList.add("max");
+      input1.classList.add("input-active");
     } else {
-      btn.classList.remove("btn-active");
-      btn.classList.add("btn");
+      max1.classList.remove("max");
+      max1.classList.add("max-on");
+      input1.classList.remove("input-active");
+    }
+
+    // input2: 최대 192자
+    if (input2.value.trim().length > 192) {
+      max2.classList.remove("max-on");
+      max2.classList.add("max");
+
+      input2.classList.add("input-active");
+    } else {
+      max2.classList.remove("max");
+      max2.classList.add("max-on");
+
+      input2.classList.remove("input-active");
     }
   }
-
-  for (let i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("input", checkInputs);
-  }
-
-  checkInputs();
-
-  //이미지 미리보기
+  input1.addEventListener("input", checkInputs);
+  input2.addEventListener("input", checkInputs);
 });
+
+////버튼 색 바꾸기기
+//const btn = document.getElementById("btn");
+//   if (allFilled) {
+//     btn.classList.remove("btn");
+//     btn.classList.add("btn-active");
+//   } else {
+//     btn.classList.remove("btn-active");
+//     btn.classList.add("btn");
+//   }
+// }
+
+// //버튼 택스트 클릭시 함수호출
+// document
+//   .getElementById("btn-active")
+//   .addEventListener("click", function () {});

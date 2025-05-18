@@ -11,43 +11,45 @@
     />
     <script type="text/javascript" src="script.js"></script>
   </head>
+  <body>
+    <div class="container">
+      <a href #><span id="ᐸ">ᐸ</span></a>
+      <div class="header">
+        <div class="item acquisition">
+          <a href="/Eum 습득물/index.html">습득물 등록</a>
+        </div>
+        <a href="/Eum 분실물/index.html" class="item">
+          <div class="lost">분실물 등록</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="lostname">
+        <input
+          type="text"
+          class="input"
+          placeholder="습득하신 물품명을 입력해주세요(최대 32자)"
+        />
+        <span class="max-on" id="max1">최대 글자 수입니다.</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="explanation">
+        <textarea
+          class="custom-input input"
+          placeholder="습득하신 물품명에 대한 설명을 작성해주세요(최대 192자)"
+        ></textarea>
+        <span class="max-on" id="max2">최대 글자 수입니다.</span>
+        <div class="photo" id="photo">
+          <input type="file" id="fileInput" style="display: none" />
+          <img id="preview" />
+          <i class="fa-solid fa-file" id="file-icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn" id="btn">습득물 등록</div>
+  </body>
 </html>
-<body>
-  <div class="container">
-    <a href #><span id="ᐸ">ᐸ</span></a>
-    <div class="header">
-      <div class="item acquisition">
-        <a href="/Eum 습득물/index.html">습득물 등록</a>
-      </div>
-      <a href="/Eum 분실물/index.html" class="item">
-        <div class="lost">분실물 등록</div>
-      </a>
-    </div>
-  </div>
-
-  <div class="content">
-    <div class="lostname">
-      <input
-        type="text"
-        class="input"
-        placeholder="습득하신 물품명을 입력해주세요(최대 32자)"
-      />
-    </div>
-  </div>
-
-  <div class="content">
-    <div class="explanation">
-      <textarea
-        class="custom-input input"
-        placeholder="습득하신 물품명에 대한 설명을 작성해주세요(최대 192자)"
-      ></textarea>
-      <div class="photo" id="photo">
-        <input type="file" id="fileInput" style="display: none" />
-        <img id="preview" />
-        <i class="fa-solid fa-file" id="file-icon"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="btn" id="btn">습득물 등록</div>
-</body>
