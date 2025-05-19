@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
           reader.onload = function (event) {
             preview.src = event.target.result;
             preview.style.display = "block";
-
-            // btn.classList.remove("btn");
-            // btn.classList.add("btn-active");
           };
+          btn.classList.remove("btn");
+          btn.classList.add("btn-active");
           reader.readAsDataURL(file);
-        } /*else {
+        } else {
           btn.classList.remove("btn-active");
           btn.classList.add("btn");
-        }*/
+        }
+        ``;
       });
     //}
   });
