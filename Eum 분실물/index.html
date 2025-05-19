@@ -12,35 +12,55 @@
     <script type="text/javascript" src="script.js"></script>
   </head>
 </html>
-<body>
-  <h1></h1>
-
-  <div class="header">
-    <a href="/Eum 습득물/index.html">
-      <div class="item acquisition">습득물 등록</div>
-    </a>
-    <div class="item lost">
-      <a href="/Eum 분실물/index.html">분실물 등록</a>
-    </div>
-  </div>
-
-  <div class="content">
-    <div class="lostname">
-      <input type="text" placeholder="찾으시는 물품명을 입력해주세요" />
-    </div>
-  </div>
-
-  <div class="content">
-    <div class="explanation">
-      <textarea
-        class="custom-input"
-        placeholder="찾으시는 물품명에 대한 설명을 작성해주세요"
-      ></textarea>
-      <div class="photo">
-        <i class="fa-solid fa-file"></i>
+  <body>
+    <div class="container">
+      <a href #><span id="ᐸ">ᐸ</span></a>
+      <div class="header">
+        <a href="/Eum 습득물/index.html" class="item">
+        <div class=" acquisition">
+          습득물 등록
+        </div>
+        </a>
+        
+          <div class="lost item"><a href="/Eum 분실물/index.html">분실물 등록</a></div>
+        
       </div>
     </div>
-  </div>
+  <form>
+      <div class="content">
+        <div class="lostname">
+          <input
+            type="text"
+            class="input"
+            placeholder="분실하신 물품명을 입력해주세요(최대 32자)"
+          />
+          <span class="max-on" id="max1">최대 글자 수입니다.</span>
+        </div>
+      </div>
 
-  <div class="btn">게시글 등록</div>
-</body>
+      <div class="content">
+        <div class="explanation">
+          <textarea
+            class="custom-input input"
+            placeholder="분실하신 물품명에 대한 설명을 작성해주세요(최대 192자)"
+          ></textarea>
+          <img id="preview" style="display: none" />
+          <span class="max-on" id="max2">최대 글자 수입니다.</span>
+          <div class="photo" id="photo">
+            <input
+              type="file"
+              id="fileInput"
+              style="display: none"
+              accept="image/*"
+            />
+
+            <i class="fa-solid fa-file" id="file-icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn" id="btn">습득물 등록</div>
+      <input type="button" id="bt" style="display: none" />
+    </form>
+  </body>
+</html>
