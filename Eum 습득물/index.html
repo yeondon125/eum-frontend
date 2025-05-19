@@ -23,39 +23,41 @@
         </a>
       </div>
     </div>
-
-    <div class="content">
-      <div class="lostname">
-        <input
-          type="text"
-          class="input"
-          placeholder="습득하신 물품명을 입력해주세요(최대 32자)"
-        />
-        <span class="max-on" id="max1">최대 글자 수입니다.</span>
-      </div>
-    </div>
-
-    <div class="content">
-      <div class="explanation">
-        <textarea
-          class="custom-input input"
-          placeholder="습득하신 물품명에 대한 설명을 작성해주세요(최대 192자)"
-        ></textarea>
-        <img id="preview" style="display: none" />
-        <span class="max-on" id="max2">최대 글자 수입니다.</span>
-        <div class="photo" id="photo">
+    <form>
+      <div class="content">
+        <div class="lostname">
           <input
-            type="file"
-            id="fileInput"
-            style="display: none"
-            accept="image/*"
+            type="text"
+            class="input"
+            placeholder="습득하신 물품명을 입력해주세요(최대 32자)"
           />
-
-          <i class="fa-solid fa-file" id="file-icon"></i>
+          <span class="max-on" id="max1">최대 글자 수입니다.</span>
         </div>
       </div>
-    </div>
 
-    <div class="btn" id="btn">습득물 등록</div>
+      <div class="content">
+        <div class="explanation">
+          <textarea
+            class="custom-input input"
+            placeholder="습득하신 물품명에 대한 설명을 작성해주세요(최대 192자)"
+          ></textarea>
+          <img id="preview" style="display: none" />
+          <span class="max-on" id="max2">최대 글자 수입니다.</span>
+          <div class="photo" id="photo">
+            <input
+              type="file"
+              id="fileInput"
+              style="display: none"
+              accept="image/*"
+            />
+
+            <i class="fa-solid fa-file" id="file-icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn" id="btn">습득물 등록</div>
+      <input type="button" id="bt" style="display: none" />
+    </form>
   </body>
 </html>

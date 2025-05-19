@@ -20,6 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
           };
           btn.classList.remove("btn");
           btn.classList.add("btn-active");
+          document.getElementById("btn").addEventListener("click", function () {
+            document.getElementById("bt").click();
+          });
+
           reader.readAsDataURL(file);
         } else {
           btn.classList.remove("btn-active");
@@ -67,15 +71,3 @@ document.addEventListener("DOMContentLoaded", function () {
   input1.addEventListener("input", checkInputs);
   input2.addEventListener("input", checkInputs);
 });
-
-////버튼 색 바꾸기기
-//
-//   if (allFilled) {
-//
-//   }
-// }
-
-// //버튼 택스트 클릭시 함수호출
-// document
-//   .getElementById("btn-active")
-//   .addEventListener("click", function () {});
