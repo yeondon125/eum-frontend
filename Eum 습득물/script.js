@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
           btn.classList.remove("btn-active");
           btn.classList.add("btn");
         }
-        ``;
       });
     //}
   });
