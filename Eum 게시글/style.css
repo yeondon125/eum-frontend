@@ -6,6 +6,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   box-sizing: border-box;
+  position: relative;
 }
 
 a {
@@ -26,17 +27,27 @@ body {
   padding: 0 27vw;
 }
 
-.header {
-  margin-top: 80px;
+.container {
+  width: 100%;
+  margin: 150px 0 0 0;
   display: flex;
-  justify-content: center;
+}
+.fa-user {
+  padding-left: 0.75vw;
+  font-size: 1.5rem;
+}
+
+.user-name {
+  color: rgba(26, 48, 109, 1);
+}
+.header {
+  display: flex;
+  justify-content: start;
   align-items: center;
-  background-color: #1a306d;
-  padding: 0.3vw;
   border-radius: 3rem;
-  width: clamp(400px, 32vw, 473px);
+  width: 100%;
   height: clamp(35px, 4vw, 44px);
-  margin: 150px 0 20px 0;
+  gap: 5px;
 }
 
 .explanation {
@@ -90,4 +101,30 @@ body {
 
   cursor: pointer;
   flex-shrink: 0;
+}
+
+.logo {
+  position: absolute;
+  top: 53px;
+  left: 81px;
+}
+.logo img {
+  width: 100px;
+  height: 108px;
+}
+
+.user-info {
+  position: absolute;
+  width: 144px;
+  height: 59px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(224, 226, 255, 1);
+  border-radius: 2rem;
+  border: 2px solid rgba(58, 66, 216, 1);
+
+  top: 84px;
+  right: 83.5px;
 }
