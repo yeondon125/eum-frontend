@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+  //버튼 클릭시 api 전송
+  document;
+  document.querySelector(".btn-active").addEventListener("click", function () {
+    //api
+  });
+
   // 포토 클릭 시 파일 선택 {
   document.getElementById("photo").addEventListener("click", function () {
     document.getElementById("fileInput").click();
@@ -41,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function checkInputs() {
     // input1: 최대 32자
-    if (input1.value.trim().length >= 1) {
+    if (input1.value.trim().length >= 1 && input1.value.trim().length < 32) {
       btn.classList.remove("btn");
       btn.classList.add("btn-active");
     } else if (input1.value.trim().length > 32) {
@@ -64,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
       max2.classList.remove("max-on");
       max2.classList.add("max");
       input2.value = input2.value.trim().slice(0, 192);
-
       input2.classList.add("input-active");
       btn.classList.remove("btn-active");
       btn.classList.add("btn");
@@ -75,17 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
       input2.classList.remove("input-active");
     }
   }
-
-  // //버튼 클릭시 api 전송
-  // document
-  //   .getElementsByClassName("btn-active")
-  //   .addEventListener("click", function () {
-  //     document
-  //       .getElementById("bt")
-  //       .click
-  //       //api
-  //       ();
-  //   });
 
   //인풋 입력 인지시 함수실행
   input1.addEventListener("input", checkInputs);
