@@ -66,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
       input2.value = input2.value.trim().slice(0, 192);
 
       input2.classList.add("input-active");
+      btn.classList.remove("btn-active");
+      btn.classList.add("btn");
     } else {
       max2.classList.remove("max");
       max2.classList.add("max-on");
@@ -73,6 +75,18 @@ document.addEventListener("DOMContentLoaded", function () {
       input2.classList.remove("input-active");
     }
   }
+
+  // //버튼 클릭시 api 전송
+  // document
+  //   .getElementsByClassName("btn-active")
+  //   .addEventListener("click", function () {
+  //     document
+  //       .getElementById("bt")
+  //       .click
+  //       //api
+  //       ();
+  //   });
+
   //인풋 입력 인지시 함수실행
   input1.addEventListener("input", checkInputs);
   input2.addEventListener("input", checkInputs);
