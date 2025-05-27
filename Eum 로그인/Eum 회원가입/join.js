@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const submitButton = document.querySelector('.submit-button');
   const studentIdError = document.getElementById('student-id-error');
 
-  // 버튼 처음엔 비활성화
   submitButton.disabled = true;
 
   function validateInputs() {
@@ -18,11 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isStudentIdFilled && !isStudentIdValid) {
       studentIdInput.classList.add('input-error');
       studentIdError.textContent = '올바른 학번을 입력해주세요(4자리)';
-      studentIdError.style.opacity = '1'; // 보이게
+      studentIdError.style.opacity = '1';
     } else {
       studentIdInput.classList.remove('input-error');
-      studentIdError.textContent = ''; // 메시지 지우기
-      studentIdError.style.opacity = '0'; // 숨기기
+      studentIdError.textContent = '';
+      studentIdError.style.opacity = '0';
     }
 
     submitButton.disabled = !(isNameFilled && isStudentIdValid);

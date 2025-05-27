@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const submitButton = document.querySelector('.submit-button');
   const passwordError = document.getElementById('student-id-error');
 
-  // 처음에 버튼 비활성화
   submitButton.disabled = true;
 
   function validateInputs() {
@@ -40,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
   passwordInput.addEventListener('input', validateInputs);
 });
 
-// 👁️ 비밀번호 보이기/숨기기 기능
 document.addEventListener('DOMContentLoaded', function () {
   const passwordInput = document.getElementById('student-id');
   const togglePw = document.getElementById('togglePw');

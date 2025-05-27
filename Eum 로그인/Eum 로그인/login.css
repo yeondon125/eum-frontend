@@ -28,7 +28,6 @@ body {
   top: 25px;
 }
 
-/* 공통 input 그룹 스타일 */
 .input-group {
   position: relative;
   margin-bottom: 1rem;
@@ -38,18 +37,17 @@ body {
 
 .input-group input {
   border: 1px solid black;
-  padding: 10px 2.5rem 10px 2.5rem; /* 왼쪽 아이콘, 오른쪽 아이콘 모두 위한 패딩 */
+  padding: 10px 2.5rem 10px 2.5rem;
   border-radius: 5px;
   outline: none;
   width: 95%;
   box-sizing: border-box;
   font-size: 12px;
   background-color: #baccff;
-  height: 36px; /* ← 높이 고정 */
-  line-height: 1; /* ← 줄 높이 줄이기 */
+  height: 36px;
+  line-height: 1;
 }
 
-/* 왼쪽 아이콘들 (fa-user, lock 이미지) */
 .fa-user,
 .lock {
   position: absolute;
@@ -66,7 +64,6 @@ body {
   border: none;
 }
 
-/* 눈 아이콘 */
 .fa-eye {
   position: absolute;
   right: 23px;
@@ -81,7 +78,6 @@ body {
   z-index: 2;
 }
 
-/* 도메인 텍스트 */
 .domain {
   position: absolute;
   right: 30px;
@@ -92,11 +88,9 @@ body {
   pointer-events: none;
 }
 
-/* 로그인 버튼 */
-
 button {
   width: 258px;
-  height: 36px;
+  height: 38px;
   position: relative;
   top: 4px;
   left: 36px;
@@ -105,13 +99,13 @@ button {
   background-color: rgba(59, 67, 220, 1);
   color: white;
   margin-top: 0.5rem;
+  font-size: 15px;
 }
 
 .login-button:hover {
   background-color: #2f35b5;
 }
 
-/* 회원가입 링크 */
 .signup {
   margin-top: 0.625rem;
   font-size: 12px;
