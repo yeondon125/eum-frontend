@@ -7,43 +7,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const btn = document.getElementById("btn");
 
-  // //버튼 클릭시 api 전송
-  // btn.addEventListener("click", function () {
-  //   // 상태 검사 (현재 버튼이 활성화된 상태인지?)
-  //   if (!btn.classList.contains("btn-active")) return;
-  //   // 여기서만 API 실행
-  //   fetch("/api/v1/articles", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       title: input1.value,
-  //       content: input2.value,
-  //       tag: "string",
-  //       image: "string (optional)",
-  //       // lostitem_name: input1.value,`
-  //       // lostitem_detail: input2.value,
-  //       // url_image: url,
-  //     }),
-  //   })
-  //     .then((res) => {
-  //       if (!res.ok) {
-  //         // 응답 상태 코드가 200대가 아닐 경우 오류 처리
-  //         throw new Error("서버 응답 오류: " + res.status);
-  //       }
-  //       return res.json(); // 응답 데이터를 JSON 객체로 변환
-  //     })
-  //     // JSON 변환된 데이터가 여기로 전달됨
-  //     .then((data) => {
-  //       alert("등록 성공!"); // 사용자에게 성공 알림
-  //       console.log("서버 응답:", data); // 콘솔에 응답 데이터 출력
-  //     })
-  //     .catch((err) => {
-  //       alert("서버와 연결할 수 없습니다. 다시 시도해주세요.");
-  //       console.error("API 오류:", err);
-  //     });
-  // });
+  //버튼 클릭시 api 전송
+  btn.addEventListener("click", function () {
+    // 상태 검사 (현재 버튼이 활성화된 상태인지?)
+    if (!btn.classList.contains("btn-active")) return;
+    // 여기서만 API 실행
+    fetch("https://amond-blog.n-e.kr/api/v1/articles", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: input1.value,
+        content: input2.value,
+        tag: "안녕하세요",
+        image: "",
+
+        // lostitem_name: input1.value,
+        // lostitem_detail: input2.value,
+        // lostitem_url_image: url,
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          // 응답 상태 코드가 200대가 아닐 경우 오류 처리
+          throw new Error("서버 응답 오류: " + res.status);
+        }
+        return res.json(); // 응답 데이터를 JSON 객체로 변환
+      })
+      // JSON 변환된 데이터가 여기로 전달됨
+      .then((data) => {
+        alert("등록 성공!"); // 사용자에게 성공 알림
+        console.log("서버 응답:", data); // 콘솔에 응답 데이터 출력
+      })
+      .catch((err) => {
+        alert("서버와 연결할 수 없습니다. 다시 시도해주세요.");
+        console.error("API 오류:", err);
+      });
+  });
 
   // 포토 클릭 시 파일 선택 {
   document.getElementById("photo").addEventListener("click", function () {
