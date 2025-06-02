@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const input2 = document.querySelector(".explanation textarea"); // 설명 textarea
   const max1 = document.getElementById("max1");
   const max2 = document.getElementById("max2");
-
+  let base64Image = ""; // 변환된 base64 문자열이 들어갈 변수
   const btn = document.getElementById("btn");
 
   //버튼 클릭시 api 전송
@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
         title: input1.value,
         content: input2.value,
         tag: "안녕하세요",
-        image: "",
+        image: base64Image,
 
         // lostitem_name: input1.value,
         // lostitem_detail: input2.value,
-        // lostitem_url_image: url,
+        // lostitem_url_image: base64Image,
       }),
     })
       .then((res) => {
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("photo").addEventListener("click", function () {
     document.getElementById("fileInput").click();
     //}
-    //이미지 미리보기 {
 
+    //이미지 미리보기 {
     document
       .getElementById("fileInput")
       .addEventListener("change", function (e) {
@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (file) {
           const reader = new FileReader();
           reader.onload = function (event) {
+            base64Image = event.target.result;
             preview.src = event.target.result;
             preview.style.display = "block";
           };
