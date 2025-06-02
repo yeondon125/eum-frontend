@@ -197,10 +197,16 @@ body {
   line-height: 1;
 }
 
-.input,
-.input:focus {
+.input {
   border: 1px solid black;
   outline: none;
+}
+.input::placeholder {
+  color: #939baf;
+}
+.input-v::placeholder,
+.input-v {
+  color: rgba(26, 48, 109, 1);
 }
 
 .input-active,
