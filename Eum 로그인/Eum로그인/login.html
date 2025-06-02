@@ -13,34 +13,35 @@
   <body>
     <div class="login-container">
       <div class="logo">
-        <img src="Eum 로그인.png" alt="logo" />
+        <img src="Eum로고.png" alt="logo" />
       </div>
-      <form>
-        
+      <form onsubmit="login(event)">
         <div class="input-group">
-          <i class="fa-solid fa-user"></i>
+          <img src="person.svg" class="lock" alt="person" />
           <input type="text" id="email" placeholder="아이디 입력" />
           <span class="domain">@gsm.hs.kr</span>
         </div>
 
-        
         <div class="input-group password">
-          <img src="lock.png" class="lock" alt="lock" />
+          <img src="lock.svg" class="lock" alt="lock" />
           <input type="password" id="password" placeholder="비밀번호 입력" />
-          <i id="togglePw" class="fa-regular fa-eye"></i>
+          <img
+            id="togglePw"
+            src="eyeclose.svg"
+            class="eye-icon"
+            alt="비밀번호 보기"
+          />
           <div id="error-message" class="error-message">
             올바르지 않은 이메일 또는 비밀번호입니다.
           </div>
         </div>
 
-        <button id="login-btn" onclick="login()">로그인</button>
+        <button id="login-btn" type="submit">로그인</button>
 
-        
         <div class="signup">
-          <a
-            href="http://127.0.0.1:5500/Eum%20%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85/join.html"
-            >회원가입></a
-          >
+          <a href="../Eum회원가입/join.html"
+            >회원가입<img src="화살표.svg" class="arrow" alt="lock"
+          /></a>
         </div>
       </form>
     </div>

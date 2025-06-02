@@ -48,13 +48,12 @@ body {
   line-height: 1;
 }
 
-.fa-user,
 .lock {
   position: absolute;
-  left: 50px;
+  left: 54px;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px;
+  width: 16px;
   height: 20px;
   pointer-events: none;
   color: #151b2d;
@@ -151,4 +150,11 @@ button {
 button:disabled {
   background-color: rgba(178, 178, 178, 1) !important;
   cursor: not-allowed;
+}
+
+.arrow {
+  position: relative;
+  left: 2px;
+  top: 1px;
+  width: 6.5px;
 }
