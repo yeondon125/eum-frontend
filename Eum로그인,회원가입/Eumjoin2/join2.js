@@ -61,13 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
   emailInput.addEventListener('input', validateInputs);
   passwordInput.addEventListener('input', validateInputs);
 
-  // ✅ 이메일/비밀번호 백엔드 전송 + JWT 토큰 저장
   submitButton.addEventListener('click', async () => {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
     try {
-      const response = await fetch('https://example.com/register', {
+      const response = await fetch('https://example.com/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,31 +82,30 @@ document.addEventListener('DOMContentLoaded', function () {
       const token = result.token;
 
       if (!token) {
-        alert('❌ JWT 토큰이 응답에 없어요!');
+        alert('JWT 토큰이 없습니다.');
         return;
       }
 
-      // ✅ localStorage에 저장
       localStorage.setItem('token', token);
 
-      // ✅ JWT 디코딩
       const payload = JSON.parse(atob(token.split('.')[1]));
 
-      console.log('🎫 디코딩된 JWT:', payload);
+      console.log('JWT:', payload);
 
       alert(`
-✅ 회원가입 완료 & 토큰 저장됨!
-📌 발급자 (iss): ${payload.iss}
-🆔 학번 (sub): ${payload.sub}
-🙋 이름 (name): ${payload.name}
-⏰ 발급일: ${new Date(payload.iat * 1000).toLocaleString()}
-⌛ 만료일: ${new Date(payload.exp * 1000).toLocaleString()}
+
+발급자 (iss): ${payload.iss}
+학번 (sub): ${payload.sub}
+이름 (name): ${payload.name}
+발급일: ${new Date(payload.iat * 1000).toLocaleString()}
+만료일: ${new Date(payload.exp * 1000).toLocaleString()}
       `);
 
-      window.location.href = 'next.html';
+      window.location.href =
+        'http://127.0.0.1:5500/Eum%EB%A1%9C%EA%B7%B8%EC%9D%B8,%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85/Eum%EB%A1%9C%EA%B7%B8%EC%9D%B8/login.html';
     } catch (error) {
-      console.error('❌ 회원가입 실패:', error);
-      alert('서버 요청 중 오류가 발생했어요. 다시 시도해주세요!');
+      console.error('회원가입 실패:', error);
+      alert('서버 요청 중 오류가 발생했습니다. 다시 시도해 주세요요');
     }
   });
 });
