@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: white;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  width: 333px;
+  height: 296px;
+  top: 257px;
+  left: 553px;
+  border-radius: 70px;
+  opacity: 0.9;
+  background-color: #baccff;
+}
+
+.logo img {
+  width: 5rem;
+  height: 5.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  left: 22px;
+  top: 25px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 40px;
+  right: 13px;
+}
+
+.input-group input {
+  border: 1px solid black;
+  padding: 10px 2.5rem 10px 2.5rem;
+  border-radius: 5px;
+  outline: none;
+  width: 95%;
+  box-sizing: border-box;
+  font-size: 12px;
+  background-color: #baccff;
+  height: 36px;
+  line-height: 1;
+}
+
+.lock {
+  position: absolute;
+  left: 54px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 20px;
+  pointer-events: none;
+  color: #151b2d;
+  line-height: 20px;
+  pointer-events: auto;
+  background: transparent;
+  border: none;
+}
+
+.domain {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+button {
+  width: 258px;
+  height: 38px;
+  position: relative;
+  top: 4px;
+  left: 36px;
+  border: none;
+  border-radius: 9px;
+  background-color: rgba(59, 67, 220, 1);
+  color: white;
+  margin-top: 0.5rem;
+  font-size: 15px;
+}
+
+.login-button:hover {
+  background-color: #2f35b5;
+}
+
+.signup {
+  margin-top: 0.625rem;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.signup a {
+  color: rgba(59, 59, 59, 1);
+  text-decoration: none;
+}
+
+#togglePw {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #1a306d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-message {
+  display: none;
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-left: 4px;
+  height: 20px;
+  position: absolute;
+  top: 100%;
+}
+
+.input-error {
+  border: 1px solid red !important;
+}
+
+button:disabled {
+  background-color: rgba(178, 178, 178, 1) !important;
+  cursor: not-allowed;
+}
+
+.arrow {
+  position: relative;
+  left: 2px;
+  top: 1px;
+  width: 6.5px;
+}

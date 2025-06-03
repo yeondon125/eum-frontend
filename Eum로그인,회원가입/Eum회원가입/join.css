@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  font-family: Arial, sans-serif;
+}
+
+.login-container {
+  width: 333px;
+  height: 363px;
+  top: 223px;
+  left: 553px;
+  border-radius: 48px;
+  opacity: 0.9;
+  background-color: rgba(186, 204, 255, 1);
+}
+
+.logo {
+  margin-top: 2px;
+}
+
+.logo img {
+  width: 5rem;
+  height: auto;
+  position: relative;
+  left: 20px;
+  top: 25px;
+}
+
+.input-group {
+  margin-bottom: 2px;
+  position: relative;
+  top: 20px;
+  width: 280px;
+  left: 25px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 12px;
+  background-color: rgba(186, 204, 255, 1);
+}
+
+.submit-button {
+  width: 75%;
+  padding: 7px;
+  background-color: #4040ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 2.5rem;
+  position: relative;
+  left: 39px;
+  bottom: 2px;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.login-link a {
+  color: rgba(59, 59, 59, 1);
+  text-decoration: none;
+  font-size: 12px;
+  position: relative;
+  top: 7px;
+}
+
+.submit-button:disabled {
+  background-color: rgba(178, 178, 178, 1);
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  font-size: 9px;
+  margin-top: 5px;
+
+  height: 16px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.input-error {
+  border: 1px solid red;
+}
+
+.error-and-button-group {
+  height: 80px;
+  position: relative;
+}
+
+.arrow {
+  position: relative;
+  left: 2px;
+  top: 1px;
+  width: 6.5px;
+}
