@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const password = passwordInput.value.trim();
 
     try {
-      const response = await fetch('https://example.com/login', {
+      const response = await fetch('https://yourapp.mockapi.io/api/v1/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -94,9 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       console.log('JWT:', payload);
 
-      alert(`
+      alert('회원가입 성공!');
 
-    발급자 (iss): ${payload.iss}
+      alert(`
+      발급자 (iss): ${payload.iss}
       학번 (sub): ${payload.sub}
       이름 (name): ${payload.name}
           발급일: ${new Date(payload.iat * 1000).toLocaleString()}

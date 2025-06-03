@@ -39,7 +39,7 @@ function login(event) {
   const email = emailInput.value.trim();
   const password = pwInput.value.trim();
 
-  fetch('https://example.com/login', {
+  fetch('https://reqres.in/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

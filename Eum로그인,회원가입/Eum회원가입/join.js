@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const studentId = studentIdInput.value.trim();
 
     try {
-      const response = await fetch('https://example.com/signup', {
+      const response = await fetch('https://yourapp.mockapi.io/api/v1/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
