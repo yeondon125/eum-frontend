@@ -51,8 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      localStorage.setItem('token', token);
-
       // JWT 디코딩
       const payload = JSON.parse(atob(token.split('.')[1]));
 
