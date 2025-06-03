@@ -13,13 +13,9 @@ body {
   height: 363px;
   top: 223px;
   left: 553px;
-  border-radius: 70px;
+  border-radius: 48px;
   opacity: 0.9;
   background-color: rgba(186, 204, 255, 1);
-}
-
-.logo {
-  margin-bottom: 2px;
 }
 
 .logo img {
@@ -84,6 +80,8 @@ input {
   color: rgba(59, 59, 59, 1);
   text-decoration: none;
   font-size: 12px;
+  position: relative;
+  bottom: 4px;
 }
 
 .submit-button:disabled {
@@ -94,25 +92,11 @@ input {
 .domain {
   position: absolute;
   right: 14px;
-  top: 69%;
+  top: 55%;
   transform: translateY(-50%);
   color: #888;
   font-size: 0.9rem;
   pointer-events: none;
-}
-
-.fa-eye {
-  position: absolute;
-  right: 23px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  color: #1a306d;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  z-index: 2;
 }
 
 #togglePw {
@@ -147,4 +131,11 @@ input {
 
 .input-error {
   border: 1px solid red;
+}
+
+.arrow {
+  position: relative;
+  left: 2px;
+  top: 1px;
+  width: 6.5px;
 }

@@ -63,20 +63,6 @@ body {
   border: none;
 }
 
-.fa-eye {
-  position: absolute;
-  right: 23px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  color: #1a306d;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  z-index: 2;
-}
-
 .domain {
   position: absolute;
   right: 30px;

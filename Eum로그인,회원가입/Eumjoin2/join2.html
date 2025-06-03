@@ -14,7 +14,7 @@
   <body>
     <div class="login-container">
       <div class="logo">
-        <img src="Eum 로그인.png" alt="logo" />
+        <img src="Eum로고.png" alt="logo" />
       </div>
 
       <div class="input-group">
@@ -25,6 +25,9 @@
           placeholder="학교 이메일을 설정해주세요"
         />
         <span class="domain">@gsm.hs.kr</span>
+        <span id="email-error" class="error-message">
+          올바른 형식의 이메일을 입력해주세요
+        </span>
       </div>
 
       <div class="input-group">
@@ -34,7 +37,12 @@
           id="student-id"
           placeholder="설정하실 비밀번호를 입력해주세요"
         />
-        <i id="togglePw" class="fa-regular fa-eye"></i>
+        <img
+          id="togglePw"
+          src="eyeclose.svg"
+          class="eye-icon"
+          alt="비밀번호 보기"
+        />
         <span id="student-id-error" class="error-message">
           8~20자 이내로 영어,숫자,특수문자(~,?,!,@,$)의 조합으로
           입력해주세요</span
@@ -43,13 +51,15 @@
 
       <button
         class="submit-button"
-        onclick="location.href='../Eum회원가입/join.html'"
+        onclick="location.href='../Eum로그인/login.html'"
       >
         회원가입
       </button>
 
       <div class="login-link">
-        <a href="../Eum로그인/login.html">로그인></a>
+        <a href="../Eum로그인/login.html"
+          >로그인<img src="화살표.svg" class="arrow" alt="lock"
+        /></a>
       </div>
     </div>
     <script src="join2.js"></script>

@@ -13,13 +13,13 @@ body {
   height: 363px;
   top: 223px;
   left: 553px;
-  border-radius: 70px;
+  border-radius: 48px;
   opacity: 0.9;
   background-color: rgba(186, 204, 255, 1);
 }
 
 .logo {
-  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 .logo img {
@@ -105,4 +105,11 @@ input {
 .error-and-button-group {
   height: 80px;
   position: relative;
+}
+
+.arrow {
+  position: relative;
+  left: 2px;
+  top: 1px;
+  width: 6.5px;
 }

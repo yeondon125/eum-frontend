@@ -56,7 +56,12 @@ function login(event) {
     })
     .then((data) => {
       console.log('로그인 성공:', data);
-      location.href = 'main.html';
+
+      if (data.token) {
+        localStorage.setItem('jwtToken', data.token);
+      }
+
+      location.href = '../../../main/main화면/main화면(로그인O)/main.html';
     })
     .catch((error) => {
       console.error('에러:', error);
