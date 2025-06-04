@@ -23,12 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const isEmailFilled = email !== '';
     const isPasswordFilled = password !== '';
 
+    const emailValid = /^s2[0-9a-zA-Z]+$/.test(email);
     const passwordValid =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[~?!@$])[A-Za-z\d~?!@$]{8,20}$/.test(
         password
       );
-
-    const emailValid = /^s2[0-9a-zA-Z]+$/.test(email);
 
     if (isEmailFilled && !emailValid) {
       emailInput.classList.add('input-error');
@@ -87,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('JWT 토큰이 응답에 없습니다');
         return;
       }
-      window.location.href = 'http://127.0.0.1:5500/Eum로그인/login.html';
 
       localStorage.setItem('token', token);
 
@@ -96,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('JWT:', payload);
 
       alert('회원가입 성공!');
-
       alert(`
       발급자 (iss): ${payload.iss}
       학번 (sub): ${payload.sub}
@@ -104,6 +101,8 @@ document.addEventListener('DOMContentLoaded', function () {
           발급일: ${new Date(payload.iat * 1000).toLocaleString()}
           만료일: ${new Date(payload.exp * 1000).toLocaleString()}
       `);
+
+      window.location.href = 'http://127.0.0.1:5500/Eum로그인/login.html';
     } catch (error) {
       console.error('회원가입 실패:', error);
       alert('서버 요청 중 오류가 발생했습니다. 다시 시도해주세요');
