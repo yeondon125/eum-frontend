@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const password = passwordInput.value.trim();
 
     try {
-      const response = await fetch('https://yourapp.mockapi.io/api/v1/users', {
+      const response = await fetch('https://gsm-eum.p-e.kr/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
           만료일: ${new Date(payload.exp * 1000).toLocaleString()}
       `);
 
-      window.location.href = 'next.html';
+      window.location.href = 'http://127.0.0.1:5500/Eum로그인/login.html';
     } catch (error) {
       console.error('회원가입 실패:', error);
       alert('서버 요청 중 오류가 발생했습니다. 다시 시도해주세요');

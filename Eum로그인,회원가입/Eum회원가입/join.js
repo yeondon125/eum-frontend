@@ -64,17 +64,15 @@ document.addEventListener('DOMContentLoaded', function () {
 만료일: ${new Date(payload.exp * 1000).toLocaleString()}
             `);
 
-      // ✅ 다음 단계에서 사용할 수 있도록 이름/학번 저장
       localStorage.setItem('student_name', name);
       localStorage.setItem('student_id', studentId);
 
-      // 다음 페이지로 이동
-      window.location.href = 'http://127.0.0.1:5500/Eum%20회원가입2/join2.html';
+      window.location.href = 'http://127.0.0.1:5500/Eum회원가입2/join2.html';
     } catch (error) {
       console.error('요청 실패:', error);
       alert('서버 요청 중 문제가 발생했습니다. 다시 시도해주세요');
     }
   });
 
-  validateInputs(); // 초기 체크
+  validateInputs();
 });

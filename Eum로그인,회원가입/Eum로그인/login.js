@@ -39,7 +39,7 @@ function login(event) {
   const email = emailInput.value.trim();
   const password = pwInput.value.trim();
 
-  fetch('https://reqres.in/api/login', {
+  fetch('https://gsm-eum.p-e.kr/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
