@@ -1,0 +1,130 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Pretendard Variable", sans-serif;
+  color: #ccc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  box-sizing: border-box;
+  padding: 0 27vw;
+}
+
+.container {
+  width: 100%;
+  margin: 150px 0 0 0;
+  display: flex;
+}
+.fa-user {
+  padding-left: 0.75vw;
+  font-size: 1.5rem;
+}
+
+.user-name {
+  color: rgba(26, 48, 109, 1);
+}
+.header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-radius: 3rem;
+  width: 100%;
+  height: clamp(35px, 4vw, 44px);
+  gap: 5px;
+}
+
+.explanation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+
+  position: relative;
+}
+
+.explanation div {
+  width: 41.6vw;
+  height: clamp(200px, 26vw, 365px);
+  border-radius: 1.5rem;
+  border: 1px solid black;
+  padding: 0.85vw 1.3vw;
+  margin: 0 0 37px 0;
+  font-family: "Pretendard Variable", sans-serif;
+
+  resize: none;
+  font-size: clamp(14px, 1.6vw, 20px);
+
+  color: #939baf;
+}
+
+#preview {
+  position: absolute;
+  bottom: 50px;
+  left: 30px;
+  width: clamp(auto, auto, 310px);
+  height: 12vw;
+  border-radius: 8px;
+  z-index: 2;
+  display: none;
+}
+
+.btn-active {
+  width: 41.6vw;
+  height: clamp(50px, 4.17vw, 60px);
+  border-radius: 1.5rem;
+  border: 0;
+  padding: 0rem 1.3vw;
+  font-size: clamp(14px, 1.6vw, 24px);
+  border: 1px solid #3b43dc;
+  color: #ffffff;
+  background-color: #3b43dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.logo {
+  position: absolute;
+  top: 53px;
+  left: 81px;
+}
+.logo img {
+  width: 100px;
+  height: 108px;
+}
+
+.user-info {
+  position: absolute;
+  width: 144px;
+  height: 59px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(224, 226, 255, 1);
+  border-radius: 2rem;
+  border: 2px solid rgba(58, 66, 216, 1);
+
+  top: 84px;
+  right: 83.5px;
+}

@@ -1,0 +1,220 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pretendard Variable", sans-serif;
+
+  color: #ccc;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* gap: clamp(16px, 2vw, 20px); */
+
+  box-sizing: border-box;
+  padding: 0 27vw;
+}
+.container {
+  margin-top: 80px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a306d;
+  padding: 0.3vw;
+  border-radius: 3rem;
+  width: clamp(400px, 32vw, 473px);
+  height: clamp(35px, 4vw, 44px);
+  margin-bottom: 30px;
+}
+
+.header a {
+  color: inherit;
+  text-decoration: none;
+}
+.item {
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+
+  width: 18vw;
+  height: clamp(30px, 4vw, 44px);
+  font-size: clamp(14px, 1.6vw, 24px);
+}
+
+.acquisition {
+  background-color: #f2f3ff;
+  color: #1a306d;
+  border-radius: 3rem;
+}
+
+.lost {
+  color: #f2f3ff;
+}
+
+.lostname {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.lostname input {
+  width: 41.6vw;
+  height: clamp(50px, 4.17vw, 57px);
+  border-radius: 1.5rem;
+
+  padding: 0 1.3vw;
+  font-size: clamp(14px, 1.6vw, 20px);
+
+  color: #1a306d;
+  margin: 0;
+}
+.input::placeholder {
+  color: #939baf;
+}
+.lostname {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.explanation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+
+  position: relative;
+}
+
+.explanation textarea {
+  width: 41.6vw;
+  height: clamp(200px, 26vw, 365px);
+  border-radius: 1.5rem;
+
+  padding: 0.85vw 1.3vw;
+  margin: 0;
+  font-family: "Pretendard Variable", sans-serif;
+  font-style: Pretendard Variable, sans-serif;
+  resize: none;
+  font-size: clamp(14px, 1.6vw, 20px);
+
+  color: #1a306d;
+}
+
+#preview {
+  position: absolute;
+  bottom: 50px; /* 원하는 위치로 조정 */
+  left: 30px; /* 원하는 위치로 조정 */
+  width: clamp(auto, auto, 310px);
+  height: 12vw;
+  border-radius: 8px;
+  z-index: 2;
+  display: none;
+}
+
+.btn {
+  width: 41.6vw;
+  height: clamp(50px, 4.17vw, 55px);
+  border-radius: 1.5rem;
+  border: 0;
+  padding: 0 1.3vw;
+  font-size: clamp(14px, 1.6vw, 24px);
+
+  color: #ffffff;
+  background-color: #b2b2b2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.btn-active {
+  width: 41.6vw;
+  height: clamp(50px, 4.17vw, 60px);
+  border-radius: 1.5rem;
+  border: 0;
+  padding: 0rem 1.3vw;
+  font-size: clamp(14px, 1.6vw, 24px);
+
+  color: #ffffff;
+  background-color: #3b43dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.explanation {
+  position: relative;
+}
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #1a306d;
+  position: absolute;
+  right: 15px;
+  bottom: 40px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.fa-file {
+  font-size: 2.6vw;
+  color: white;
+}
+
+.max-on {
+  color: white;
+  font-size: 12px;
+  margin: 0 0 10px 0;
+  padding: 0;
+  line-height: 1;
+}
+.max {
+  color: #ff1818;
+  font-size: 12px;
+  margin: 0 0 10px 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.input,
+.input:focus {
+  border: 1px solid black;
+  outline: none;
+}
+
+.input-active,
+.input-active:focus {
+  border: 1px solid #ff1818;
+  outline: none;
+}
+
+#ᐸ {
+  color: black;
+
+  padding: 10.315px;
+  position: absolute;
+  top: 80px;
+  left: 27.5vw;
+}
