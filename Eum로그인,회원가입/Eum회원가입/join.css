@@ -67,12 +67,12 @@ input {
   margin-top: 2.5rem;
   position: relative;
   left: 39px;
-  bottom: 2px;
+  top: 13px;
 }
 
 .login-link {
   text-align: center;
-  margin-top: 0px;
+  margin-top: 15px;
 }
 
 .login-link a {

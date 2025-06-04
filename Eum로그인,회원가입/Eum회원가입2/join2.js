@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('JWT 토큰이 응답에 없습니다');
         return;
       }
+      window.location.href = 'http://127.0.0.1:5500/Eum로그인/login.html';
 
       localStorage.setItem('token', token);
 
@@ -103,8 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
           발급일: ${new Date(payload.iat * 1000).toLocaleString()}
           만료일: ${new Date(payload.exp * 1000).toLocaleString()}
       `);
-
-      window.location.href = 'http://127.0.0.1:5500/Eum로그인/login.html';
     } catch (error) {
       console.error('회원가입 실패:', error);
       alert('서버 요청 중 오류가 발생했습니다. 다시 시도해주세요');
