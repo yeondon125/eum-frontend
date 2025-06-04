@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const emailInput = document.getElementById('username');
-  const passwordInput = document.getElementById('student-id');
+  const emailInput = document.getElementById('student_name');
+  const passwordInput = document.getElementById('student_id');
   const submitButton = document.querySelector('.submit-button');
   const passwordError = document.getElementById('student-id-error');
   const emailError = document.getElementById('email-error');
@@ -72,7 +72,12 @@ document.addEventListener('DOMContentLoaded', function () {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          student_name: name,
+          student_id: studentId,
+          email,
+          password,
+        }),
       });
 
       if (!response.ok) {
@@ -88,6 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       localStorage.setItem('token', token);
+      localStorage.setItem('student_name', payload.name);
+      localStorage.setItem('student_id', payload.sub);
 
       const payload = JSON.parse(atob(token.split('.')[1]));
 
