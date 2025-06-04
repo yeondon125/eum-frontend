@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const max2 = document.getElementById("max2");
   let base64Image = ""; // 변환된 base64 문자열이 들어갈 변수
   const btn = document.getElementById("btn");
+  const token = localStorage.getItem("jwtToken");
 
   //버튼 클릭시 api 전송
   btn.addEventListener("click", function () {
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // lostitem_name: input1.value,
         // lostitem_detail: input2.value,
         // lostitem_url_image: base64Image,
+        // token : token
       }),
     })
       .then((res) => {

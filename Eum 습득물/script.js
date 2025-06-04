@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   let base64Image = ""; // 변환된 base64 문자열이 들어갈 변수
   //버튼 클릭시 api 전송
+  const token = localStorage.getItem("jwtToken");
   btn.addEventListener("click", function () {
     // 상태 검사 (현재 버튼이 활성화된 상태인지?)
     if (!btn.classList.contains("btn-active")) return;
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // lostitem_name: input1.value,
         // lostitem_detail: input2.value,
         // lostitem_url_image: base64Image,
+        // token : token
       }),
     })
       .then((res) => {
