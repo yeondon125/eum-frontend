@@ -77,7 +77,7 @@ body {
   padding: 0 1.3vw;
   font-size: clamp(14px, 1.6vw, 20px);
 
-  color: #939baf;
+  color: #1a306d;
 
   margin: 0;
 }
@@ -109,7 +109,7 @@ body {
   resize: none;
   font-size: clamp(14px, 1.6vw, 20px);
 
-  color: #939baf;
+  color: #1a306d;
 }
 
 #preview {
