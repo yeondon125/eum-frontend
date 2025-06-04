@@ -35,19 +35,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const studentId = studentIdInput.value.trim();
 
     try {
-      const response = await fetch('https://yourapp.mockapi.io/api/v1/users', {
+      const response = await fetch('https://gsm-eum.p-e.kr/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, studentId }),
+        body: JSON.stringify({ student_name: name, student_id: studentId }),
       });
 
       const data = await response.json();
       const token = data.token;
 
       if (!token) {
-        alert(' 토큰이 응답에 없습니다. 서버 응답을 확인해주세요');
+        alert('토큰이 응답에 없습니다. 서버 응답을 확인해주세요');
         return;
       }
 
@@ -57,19 +57,24 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('JWT:', payload);
 
       alert(`
+발급자 (iss): ${payload.iss}
+학번 (sub): ${payload.sub}
+이름 (name): ${payload.name}
+발급일: ${new Date(payload.iat * 1000).toLocaleString()}
+만료일: ${new Date(payload.exp * 1000).toLocaleString()}
+            `);
 
-      발급자 (iss): ${payload.iss}
-      학번 (sub): ${payload.sub}
-      이름 (name): ${payload.name}
-      발급일: ${new Date(payload.iat * 1000).toLocaleString()}
-      만료일: ${new Date(payload.exp * 1000).toLocaleString()}
-      `);
+      // ✅ 다음 단계에서 사용할 수 있도록 이름/학번 저장
+      localStorage.setItem('student_name', name);
+      localStorage.setItem('student_id', studentId);
 
-      window.location.href =
-        'http://127.0.0.1:5500/Eum%20%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%852/join2.html';
+      // 다음 페이지로 이동
+      window.location.href = 'http://127.0.0.1:5500/Eum%20회원가입2/join2.html';
     } catch (error) {
       console.error('요청 실패:', error);
       alert('서버 요청 중 문제가 발생했습니다. 다시 시도해주세요');
     }
   });
+
+  validateInputs(); // 초기 체크
 });
