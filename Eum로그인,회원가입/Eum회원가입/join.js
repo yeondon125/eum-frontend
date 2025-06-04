@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const studentId = studentIdInput.value.trim();
 
     try {
-      const response = await fetch('https://gsm-eum.p-e.kr/signup', {
+      const response = await fetch('http://localhost:8081/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       localStorage.setItem('student_name', payload.name);
       localStorage.setItem('student_id', payload.sub);
-      localStorage.setItem('jwtToken', token);
+      localStorage.setItem('token', token);
 
       alert(`
       발급자 (iss): ${payload.iss}

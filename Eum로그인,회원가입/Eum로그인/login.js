@@ -39,7 +39,7 @@ function login(event) {
   const email = emailInput.value.trim();
   const password = pwInput.value.trim();
 
-  fetch('https://gsm-eum.p-e.kr/login', {
+  fetch('http://localhost:8081/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -58,7 +58,11 @@ function login(event) {
       console.log('로그인 성공:', data);
 
       if (data.token) {
-        localStorage.setItem('jwtToken', data.token);
+        localStorage.setItem('token', data.token);
+      }
+
+      if (data.name) {
+        localStorage.setItem('student_name', data.name);
       }
 
       location.href = '../../../main/main화면/main화면(로그인O)/main.html';

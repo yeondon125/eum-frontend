@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const password = passwordInput.value.trim();
 
     try {
-      const response = await fetch('https://gsm-eum.p-e.kr/signup', {
+      const response = await fetch('http://localhost:8081/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
