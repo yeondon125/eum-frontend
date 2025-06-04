@@ -67,27 +67,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    const name = localStorage.getItem('student_name');
-    const studentId = localStorage.getItem('student_id');
-
-    if (!student_name || !student_id) {
-      alert('이전 단계 정보가 없습니다. 다시 처음부터 가입을 진행해주세요.');
-      return;
-    }
-
     try {
-      const response = await fetch('https://gsm-eum.p-e.kr/signup', {
+      const response = await fetch('https://yourapp.mockapi.io/api/v1/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-
-        body: JSON.stringify({
-          student_name,
-          student_id,
-          email,
-          password,
-        }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (!response.ok) {
@@ -108,12 +94,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       console.log('JWT:', payload);
 
+      alert('회원가입 성공!');
+
       alert(`
-발급자 (iss): ${payload.iss}
-학번 (sub): ${payload.sub}
-이름 (name): ${payload.name}
-발급일: ${new Date(payload.iat * 1000).toLocaleString()}
-만료일: ${new Date(payload.exp * 1000).toLocaleString()}
+      발급자 (iss): ${payload.iss}
+      학번 (sub): ${payload.sub}
+      이름 (name): ${payload.name}
+          발급일: ${new Date(payload.iat * 1000).toLocaleString()}
+          만료일: ${new Date(payload.exp * 1000).toLocaleString()}
       `);
 
       window.location.href = 'next.html';
