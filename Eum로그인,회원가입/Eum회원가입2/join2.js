@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
   validateInputs();
 
   submitButton.addEventListener('click', async () => {
+    const name = localStorage.getItem('student_name');
+    const studentId = localStorage.getItem('student_id');
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
@@ -73,10 +75,10 @@ document.addEventListener('DOMContentLoaded', function () {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          student_name: '서연',
-          student_id: '1301',
-          email: 's2401@gsm.hs.kr',
-          password: 'abc123!@#',
+          student_name: name,
+          student_id: studentId,
+          email: `${email}@gsm.hs.kr`,
+          password: password,
         }),
       });
 
@@ -92,11 +94,11 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
       localStorage.setItem('token', token);
       localStorage.setItem('student_name', payload.name);
       localStorage.setItem('student_id', payload.sub);
-
-      const payload = JSON.parse(atob(token.split('.')[1]));
 
       console.log('JWT:', payload);
 
@@ -105,9 +107,9 @@ document.addEventListener('DOMContentLoaded', function () {
       발급자 (iss): ${payload.iss}
       학번 (sub): ${payload.sub}
       이름 (name): ${payload.name}
-          발급일: ${new Date(payload.iat * 1000).toLocaleString()}
-          만료일: ${new Date(payload.exp * 1000).toLocaleString()}
-      `);
+      발급일: ${new Date(payload.iat * 1000).toLocaleString()}
+      만료일: ${new Date(payload.exp * 1000).toLocaleString()}
+    `);
 
       window.location.href = 'http://127.0.0.1:5500/Eum로그인/login.html';
     } catch (error) {
