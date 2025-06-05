@@ -5,7 +5,7 @@
 //   })
 //   .then((data) => {
 //     console.log("받은 데이터:", data);
-
+//
 //     localStorage.setItem("posts", JSON.stringify(data));
 
 //     const lostCard = document.getElementById("lost-row");
@@ -18,6 +18,9 @@
 
 //     data.forEach((post) => {
 //       const card = document.createElement("div");
+
+//       const id = content.boardId;
+//       card.id = id;
 //       card.className = "card";
 //       card.innerHTML = `
 //         <p class="label">분실물</p>
@@ -64,7 +67,9 @@ fetch("https://amond-blog.n-e.kr/api/v1/articles")
 
     data.forEach((post) => {
       const card = document.createElement("div");
+      const id = post.id;
       card.className = "card";
+      card.id = id;
       card.innerHTML = `
         <p class="label">분실물</p>
         <img
