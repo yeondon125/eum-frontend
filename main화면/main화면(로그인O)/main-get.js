@@ -1,4 +1,4 @@
-fetch("")
+fetch("https:// localhost:8080/getitem/post")
   .then((response) => {
     console.log("응답 상태:", response.status);
     return response.json();
