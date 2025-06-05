@@ -80,7 +80,6 @@ input {
   text-decoration: none;
   font-size: 12px;
   position: relative;
-  top: 7px;
 }
 
 .submit-button:disabled {
