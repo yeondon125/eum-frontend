@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const emailInput = document.getElementById('student_name');
-  const passwordInput = document.getElementById('student_id');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
   const submitButton = document.querySelector('.submit-button');
   const passwordError = document.getElementById('student-id-error');
   const emailError = document.getElementById('email-error');
@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', function () {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          student_name: name,
-          student_id: studentId,
-          email,
-          password,
+          student_name: '서연',
+          student_id: '1301',
+          email: 's2401@gsm.hs.kr',
+          password: 'abc123!@#',
         }),
       });
 
