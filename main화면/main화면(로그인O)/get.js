@@ -17,8 +17,11 @@
 //     lostCard.innerHTML = "";
 
 //     data.forEach((post) => {
+//       const id = content.boardId;
 //       const card = document.createElement("div");
 //       card.className = "card";
+//       // console.log(`안녕하세요.${id}`);
+//       card.id = id;
 //       card.innerHTML = `
 //         <p class="label">분실물</p>
 //         <img
@@ -63,8 +66,11 @@ fetch("https://amond-blog.n-e.kr/api/v1/articles")
     lostCard.innerHTML = "";
 
     data.forEach((post) => {
+      const id = post.id;
       const card = document.createElement("div");
       card.className = "card";
+      card.id = id;
+      // console.log(`안녕하세요.${id}`);
       card.innerHTML = `
         <p class="label">습득물</p>
         <img
