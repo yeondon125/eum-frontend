@@ -6,8 +6,6 @@ fetch("")
   .then((data) => {
     console.log("받은 데이터:", data);
 
-    localStorage.setItem("posts", JSON.stringify(data));
-
     const lostCard = document.getElementById("lost-row");
     if (!lostCard) {
       console.error(" 'lost' 클래스를 가진 요소가 없습니다.");
