@@ -36,10 +36,10 @@ function checkInputs() {
 function login(event) {
   event.preventDefault();
 
-  const email = emailInput.value.trim();
+  const email = emailInput.value.trim() + '@gsm.hs.kr';
   const password = pwInput.value.trim();
 
-  fetch('http://localhost:8081/login', {
+  fetch('https://gsm-eum.p-e.kr/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
