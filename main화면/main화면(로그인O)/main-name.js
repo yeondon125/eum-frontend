@@ -1,5 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
   const name = document.getElementById("user-button");
   const uname = localStorage.getItem("student_name");
-  name.innerHTML = `<img src="../icons/Vector.svg" alt="사용자 아이콘" />${uname}`;
+  const token = localStorage.getItem("token");
+  const button = document.getElementById("user-button");
+
+  const plus = document.getElementById("plus-button");
+
+  if (token) {
+    name.innerHTML = `<img src="../icons/Vector.svg" alt="사용자 아이콘" />${uname}`;
+  } else {
+    name.innerHTML = `<img src="../icons/Vector.svg" alt="사용자 아이콘" />로그인`;
+  }
+
+  button.addEventListener("click", function () {
+    //대충 개쩌는 파일 이동시키기기
+  });
+
+  plus.addEventListener("click", function () {
+    if (token) {
+      location.href = "";
+    } else {
+      alert("로그인 후 이용 가능합니다.");
+    }
+  });
 });

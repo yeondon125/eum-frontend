@@ -5,11 +5,6 @@ deleteButtons.forEach((btn) => {
   });
 });
 
-function confirmDelete() {
-  alert("게시글이 삭제되었습니다.");
-  closeModal();
-}
-
 function closeModal() {
   document.getElementById("deleteModal").style.display = "none";
 }
