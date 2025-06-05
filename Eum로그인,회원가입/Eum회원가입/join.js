@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const nameInput = document.getElementById('username');
-  const studentIdInput = document.getElementById('student-id');
+  const nameInput = document.getElementById('student_name');
+  const studentIdInput = document.getElementById('student_id');
   const submitButton = document.querySelector('.submit-button');
   const studentIdError = document.getElementById('student-id-error');
 
