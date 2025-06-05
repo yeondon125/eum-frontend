@@ -6,14 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   submitButton.disabled = true;
 
+  // 입력 유효성 검사 함수
   function validateInputs() {
     const name = nameInput.value.trim();
     const studentId = studentIdInput.value.trim();
 
     const isNameFilled = name !== '';
     const isStudentIdFilled = studentId !== '';
-    const isStudentIdValid = /^\d{4}$/.test(studentId);
+    const isStudentIdValid = /^\d{4}$/.test(studentId); // 숫자 4자리
 
+    // 학번 형식 오류 표시
     if (isStudentIdFilled && !isStudentIdValid) {
       studentIdInput.classList.add('input-error');
       studentIdError.textContent = '올바른 학번을 입력해주세요(4자리)';
@@ -24,54 +26,27 @@ document.addEventListener('DOMContentLoaded', function () {
       studentIdError.style.opacity = '0';
     }
 
+    // 버튼 활성화 조건
     submitButton.disabled = !(isNameFilled && isStudentIdValid);
   }
 
+  // 입력값 변경될 때마다 검사
   nameInput.addEventListener('input', validateInputs);
   studentIdInput.addEventListener('input', validateInputs);
 
-  submitButton.addEventListener('click', async () => {
+  // 다음 버튼 클릭 시 → 로컬스토리지에 저장하고 페이지 이동
+  submitButton.addEventListener('click', () => {
     const name = nameInput.value.trim();
     const studentId = studentIdInput.value.trim();
 
-    try {
-      const response = await fetch('http://localhost:8081/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ student_name: name, student_id: studentId }),
-      });
+    // 🔥 서버 요청 없이, 로컬에만 저장!
+    localStorage.setItem('student_name', name);
+    localStorage.setItem('student_id', studentId);
 
-      const data = await response.json();
-      const token = data.token;
-
-      if (!token) {
-        alert('토큰이 응답에 없습니다. 서버 응답을 확인해주세요');
-        return;
-      }
-
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      console.log('JWT:', payload);
-
-      localStorage.setItem('student_name', payload.name);
-      localStorage.setItem('student_id', payload.sub);
-      localStorage.setItem('token', token);
-
-      alert(`
-      발급자 (iss): ${payload.iss}
-        학번 (sub): ${payload.sub}
-        이름 (name): ${payload.name}
-            발급일: ${new Date(payload.iat * 1000).toLocaleString()}
-            만료일: ${new Date(payload.exp * 1000).toLocaleString()}
-      `);
-
-      window.location.href = 'http://127.0.0.1:5500/Eum회원가입2/join2.html';
-    } catch (error) {
-      console.error('요청 실패:', error);
-      alert('서버 요청 중 문제가 발생했습니다. 다시 시도해주세요');
-    }
+    // 다음 단계로 이동
+    window.location.href = 'http://127.0.0.1:5500/Eum회원가입2/join2.html';
   });
 
+  // 페이지 로드시 초기 검사
   validateInputs();
 });
