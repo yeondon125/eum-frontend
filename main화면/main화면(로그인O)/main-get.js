@@ -35,6 +35,10 @@
 //           }|${student_name || "이름없음"}</p>
 //           <p class="name">${"getitem_name" || "제목 없음"}</p>
 //         </div>
+//card.addEventListener("click", () => {
+//  window.location.href = `detail.html?id=${id}`;
+//});
+//lostCard.appendChild(card);
 //       `;
 //       lostCard.appendChild(card);
 //     });
@@ -85,6 +89,9 @@ fetch("https://amond-blog.n-e.kr/api/v1/articles")
           <p class="name">${post.title || "제목 없음"}</p>
         </div>
       `;
+      card.addEventListener("click", () => {
+        window.location.href = `detail.html?id=${id}`;
+      });
       lostCard.appendChild(card);
     });
   })
