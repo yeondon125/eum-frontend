@@ -1,9 +1,9 @@
-// 1. 주소에서 id 파라미터 추출 (?id=3 → 3)
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+// // 1. 주소에서 id 파라미터 추출 (?id=3 → 3)
+// const params = new URLSearchParams(window.location.search);
+// const id = params.get("id");
 
 // 2. 단일 게시글 API 호출 (id로)
-fetch(`https://gsm-eum.p-e.kr/getitem/view/${id}`)
+fetch(`https://gsm-eum.p-e.kr/getitem/${id}`)
   .then((res) => {
     if (!res.ok) {
       throw new Error("서버 응답 실패");
