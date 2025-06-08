@@ -1,6 +1,6 @@
-// // 1. 주소에서 id 파라미터 추출 (?id=3 → 3)
-// const params = new URLSearchParams(window.location.search);
-// const id = params.get("id");
+// 1. 주소에서 id 파라미터 추출 (?id=3 → 3)
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
 
 // 2. 단일 게시글 API 호출 (id로)
 fetch(`https://gsm-eum.p-e.kr/getitem/${id}`)
@@ -14,8 +14,9 @@ fetch(`https://gsm-eum.p-e.kr/getitem/${id}`)
     // 3. 받아온 게시글 내용을 HTML에 표시
 
     // 작성자
-    document.querySelectorAll(".user-name").forEach((el) => {
-      el.textContent = post.student || "작성자 없음";
+    document.getElementById("user-name").forEach((el) => {
+      el.textContent =
+        `${post.student_id}|${post.student_name}` || "작성자 없음";
     });
 
     // 이미지

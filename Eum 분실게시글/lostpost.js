@@ -15,7 +15,8 @@ fetch(`https://gsm-eum.p-e.kr/lostitem/${id}`)
 
     // 작성자
     document.querySelectorAll(".user-name").forEach((el) => {
-      el.textContent = post.student || "작성자 없음";
+      el.textContent =
+        `${post.student_id}|${post.student_name}` || "작성자 없음";
     });
 
     // 이미지
