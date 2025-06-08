@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const button = document.getElementById("user-button");
 
   if (token) {
-    name.innerHTML = `<img src="../icons/Vector.svg" alt="사용자 아이콘" />${uname}`;
+    name.innerHTML = `<i class="fa-solid fa-user" style="color: #1a306d">${uname}`;
   } else {
-    info.innerHTML = `<img src="../icons/Vector.svg" alt="사용자 아이콘" />로그인`;
+    info.innerHTML = `<i class="fa-solid fa-user" style="color: #1a306d">로그인`;
   }
 
   button.addEventListener("click", function () {
