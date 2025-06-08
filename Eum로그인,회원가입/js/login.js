@@ -13,7 +13,7 @@ togglePw.addEventListener('click', function () {
   const isHidden = passwordField.type === 'password';
 
   passwordField.type = isHidden ? 'text' : 'password';
-  togglePw.src = isHidden ? 'eyeopen.svg' : 'eyeclose.svg';
+  togglePw.src = isHidden ? './images/eyeopen.svg' : './images/eyeclose.svg';
 });
 
 emailInput.addEventListener('input', checkInputs);

@@ -8,12 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   submitButton.disabled = true;
 
-  togglePw.src = 'eyeclose.svg';
+  togglePw.src = './images/eyeclose.svg';
 
   togglePw.addEventListener('click', function () {
     const isPassword = passwordInput.type === 'password';
     passwordInput.type = isPassword ? 'text' : 'password';
-    togglePw.src = isPassword ? 'eyeopen.svg' : 'eyeclose.svg';
+    togglePw.src = isPassword
+      ? './images/eyeopen.svg'
+      : './images/eyeclose.svg';
   });
 
   function validateInputs() {
@@ -69,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const password = passwordInput.value.trim();
 
     try {
-      const response = await fetch('http://localhost:8081/signup', {
+      const response = await fetch('https://gsm-eum.p-e.kr/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
