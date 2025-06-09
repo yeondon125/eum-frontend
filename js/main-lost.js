@@ -1,4 +1,4 @@
-fetch("https:// localhost:8080/lostitem/post")
+fetch("https://gsm-eum.p-e.kr/lostitem")
   .then((response) => {
     console.log("응답 상태:", response.status);
     return response.json();
@@ -16,7 +16,7 @@ fetch("https:// localhost:8080/lostitem/post")
 
     data.getitem.content.forEach((post) => {
       const card = document.createElement("div");
-      const id = content.boardId;
+      const id = psot.boardId;
       card.id = id;
       card.className = "card";
       card.innerHTML = `
@@ -33,8 +33,9 @@ fetch("https:// localhost:8080/lostitem/post")
           <p class="name">${post.lostitem_name || "제목 없음"}</p>
         </div>
       `;
+
       card.addEventListener("click", () => {
-        window.location.href = `detail.html?id=${id}`;
+        window.location.href = `lostpost.html?id=${id}`;
       });
       lostCard.appendChild(card);
     });
@@ -84,6 +85,7 @@ fetch("https:// localhost:8080/lostitem/post")
 //           <p class="name">${post.title || "제목 없음"}</p>
 //         </div>
 //       `;
+
 //       lostCard.appendChild(card);
 //     });
 //   })
