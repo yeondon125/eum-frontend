@@ -7,18 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const plus = document.getElementById("plus-button");
 
   if (token) {
-    name.innerHTML = `<img src="../icons/Vector.svg" alt="사용자 아이콘" />${uname}`;
+    name.innerHTML = `<img src="/images/icons/Vector.svg" alt="아이콘" />${uname}`;
   } else {
-    name.innerHTML = `<img src="../icons/Vector.svg" alt="사용자 아이콘" />로그인`;
+    name.innerHTML = `<img src="/images/icons/Vector.svg" alt="아이콘" />로그인`;
   }
 
   button.addEventListener("click", function () {
-    //대충 개쩌는 파일 이동시키기기
+    location.href = "/index.html";
   });
 
   plus.addEventListener("click", function () {
     if (token) {
-      location.href = "";
+      location.href = "/mget.html";
     } else {
       alert("로그인 후 이용 가능합니다.");
     }
