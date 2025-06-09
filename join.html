@@ -4,40 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EUM 회원가입</title>
-    <link rel="stylesheet" href="join.css" />
+    <link rel="stylesheet" href="./css/join.css" />
   </head>
 
   <body>
     <div class="login-container">
       <div class="logo">
-        <img src="Eum로고.png" alt="logo" />
+        <img src="/images/logo.png" alt="logo" />
       </div>
 
       <div class="input-group">
-        <label class="input-label" for="username">이름</label>
-        <input type="text" id="username" placeholder="이름을 입력해주세요" />
+        <label class="input-label" for="student_name">이름</label>
+        <input
+          type="text"
+          id="student_name"
+          placeholder="이름을 입력해주세요"
+        />
       </div>
 
       <div class="input-group">
-        <label class="input-label" for="student-id">학번</label>
-        <input type="text" id="student-id" placeholder="학번을 입력해주세요" />
+        <label class="input-label" for="student_id">학번</label>
+        <input type="text" id="student_id" placeholder="학번을 입력해주세요" />
         <span id="student-id-error" class="error-message"
           >올바른 학번을 입력해주세요(4자리)</span
         >
       </div>
 
       <div class="error-and-button-group">
-        <a href="../Eum회원가입2/join2.html">
+        <a href="./join2.html">
           <button type="button" class="submit-button">다음</button>
         </a>
       </div>
 
       <div class="login-link">
-        <a href="../Eum로그인/login.html"
-          >로그인<img src="화살표.svg" class="arrow" alt="lock"
+        <a href="./index.html"
+          >로그인<img src="./images/화살표.svg" class="arrow" alt="lock"
         /></a>
       </div>
     </div>
-    <script src="join.js"></script>
+    <script src="./js/join.js"></script>
   </body>
 </html>

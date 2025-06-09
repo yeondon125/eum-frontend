@@ -13,7 +13,7 @@ togglePw.addEventListener('click', function () {
   const isHidden = passwordField.type === 'password';
 
   passwordField.type = isHidden ? 'text' : 'password';
-  togglePw.src = isHidden ? 'eyeopen.svg' : 'eyeclose.svg';
+  togglePw.src = isHidden ? './images/eyeopen.svg' : './images/eyeclose.svg';
 });
 
 emailInput.addEventListener('input', checkInputs);
@@ -36,7 +36,7 @@ function checkInputs() {
 function login(event) {
   event.preventDefault();
 
-  const email = emailInput.value.trim();
+  const email = emailInput.value.trim() + '@gsm.hs.kr';
   const password = pwInput.value.trim();
 
   fetch('https://gsm-eum.p-e.kr/login', {
@@ -58,7 +58,11 @@ function login(event) {
       console.log('로그인 성공:', data);
 
       if (data.token) {
-        localStorage.setItem('jwtToken', data.token);
+        localStorage.setItem('token', data.token);
+      }
+
+      if (data.name) {
+        localStorage.setItem('student_name', data.name);
       }
 
       location.href = '../../../main/main화면/main화면(로그인O)/main.html';
