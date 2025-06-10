@@ -6,21 +6,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // 상태 검사 (현재 버튼이 활성화된 상태인지?)
     if (!btn.classList.contains("btn-active")) return;
     // 여기서만 API 실행
-    fetch("https://amond-blog.n-e.kr/api/v1/articles", {
+    fetch("https://gsm-eum.p-e.kr/getitem/post ", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title: input1.value,
-        content: input2.value,
-        tag: "안녕하세요",
-        image: base64Image,
+        // title: input1.value,
+        // content: input2.value,
+        // tag: "안녕하세요",
+        // image: base64Image,
 
-        // lostitem_name: input1.value,
-        // lostitem_detail: input2.value,
-        // lostitem_url_image: base64Image,
-        // token : token
+        lostitem_name: input1.value,
+        lostitem_detail: input2.value,
+        lostitem_url_image: base64Image,
+        token: token,
       }),
     })
       .then((res) => {
