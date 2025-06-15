@@ -71,6 +71,43 @@ document.addEventListener("DOMContentLoaded", function () {
             base64Image = event.target.result;
             preview.src = event.target.result;
             preview.style.display = "block";
+            reader.onload = function (event) {
+              const img = new Image();
+              img.onload = function () {
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+
+                // 리사이즈 기준 설정
+                let width = img.width;
+                let height = img.height;
+                const maxWidth = 800;
+                const maxHeight = 800;
+
+                // 비율 유지하면서 크기 제한
+                if (width > maxWidth || height > maxHeight) {
+                  if (width > height) {
+                    height = height * (maxWidth / width);
+                    width = maxWidth;
+                  } else {
+                    width = width * (maxHeight / height);
+                    height = maxHeight;
+                  }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // 압축 품질 설정 (0.7 정도 적당)
+                const compressedBase64 = canvas.toDataURL("image/jpeg", 0.7);
+                base64Image = compressedBase64;
+
+                preview.src = compressedBase64;
+                preview.style.display = "block";
+              };
+              img.src = event.target.result;
+            };
           };
 
           // document.getElementById("btn").addEventListener("click", function () {
