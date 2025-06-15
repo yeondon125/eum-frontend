@@ -14,7 +14,7 @@ fetch("https://gsm-eum.p-e.kr/main")
 
     lostCard.innerHTML = "";
 
-    data.getitem.content.forEach((post) => {
+    data.lostitem.content.forEach((post) => {
       const card = document.createElement("div");
       const id = psot.boardId;
       card.id = id;
@@ -22,10 +22,7 @@ fetch("https://gsm-eum.p-e.kr/main")
       card.innerHTML = `
         <p class="label">분실물</p>
         <img
-          src="${
-            post.Lostitem.content.postitem_url_image ||
-            "https://via.placeholder.com/150"
-          }"
+          src="${post.postitem_url_image || "https://via.placeholder.com/150"}"
           alt="분실물 이미지"
           class="item-img"
         />
