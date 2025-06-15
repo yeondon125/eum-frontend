@@ -3,7 +3,7 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 // 2. 단일 게시글 API 호출 (id로)
-fetch(`https://gsm-eum.p-e.kr/lostitem/${id}`)
+fetch(`https://gsm-eum.p-e.kr/lostitem/veiw/${id}`)
   .then((res) => {
     if (!res.ok) {
       throw new Error("서버 응답 실패");
