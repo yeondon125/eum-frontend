@@ -1,4 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("fileInput").addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    const preview = document.getElementById("preview");
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        preview.src = event.target.result;
+        base64Image = event.target.result;
+        preview.style.display = "block";
+      };
+      btn.classList.remove("btn");
+      btn.classList.add("btn-active");
+      document.getElementById("btn").addEventListener("click", function () {
+        document.getElementById("bt").click();
+      });
+
+      reader.readAsDataURL(file);
+    } else {
+      btn.classList.remove("btn-active");
+      btn.classList.add("btn");
+    }
+  });
+
   const btn = document.getElementById("btn");
   let base64Image = ""; // 변환된 base64 문자열이 들어갈 변수
   //버튼 클릭시 api 전송
@@ -13,11 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // title: input1.value,
-        // content: input2.value,
-        // tag: "안녕하세요",
-        // image: base64Image,
-
         lostitem_name: input1.value,
         lostitem_detail: input2.value,
         lostitem_url_image: base64Image,
@@ -48,31 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //}
     //이미지 미리보기 {
 
-    document
-      .getElementById("fileInput")
-      .addEventListener("change", function (e) {
-        const file = e.target.files[0];
-        const preview = document.getElementById("preview");
-
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function (event) {
-            preview.src = event.target.result;
-            base64Image = event.target.result;
-            preview.style.display = "block";
-          };
-          btn.classList.remove("btn");
-          btn.classList.add("btn-active");
-          document.getElementById("btn").addEventListener("click", function () {
-            document.getElementById("bt").click();
-          });
-
-          reader.readAsDataURL(file);
-        } else {
-          btn.classList.remove("btn-active");
-          btn.classList.add("btn");
-        }
-      });
     //}
   });
 
