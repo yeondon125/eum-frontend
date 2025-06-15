@@ -1,4 +1,4 @@
-fetch("https://gsm-eum.p-e.kr/lostitem")
+fetch("https://gsm-eum.p-e.kr/main/lostitem")
   .then((response) => {
     console.log("응답 상태:", response.status);
     return response.json();
