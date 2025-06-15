@@ -109,6 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
               img.src = event.target.result;
             };
           };
+          console.log("📸 base64 길이:", base64Image.length);
+          console.log(
+            "📸 base64 용량:",
+            Math.round((base64Image.length * 3) / 4 / 1024),
+            "KB"
+          );
 
           // document.getElementById("btn").addEventListener("click", function () {
           //   document.getElementById("bt").click();
