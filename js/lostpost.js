@@ -22,14 +22,14 @@ fetch(`https://gsm-eum.p-e.kr/lostitem/view/${id}`)
     // 이미지
     const img = document.getElementById("preview");
     if (img) {
-      img.src = post.imageUrl || "";
+      img.src = post.lostitem_url_image || "";
       img.style.display = "block";
     }
 
     // 내용
     const content = document.querySelector(".explanation div");
     if (content) {
-      content.textContent = post.content || "내용 없음";
+      content.textContent = post.lostitem_detail || "내용 없음";
     }
   })
   .catch((err) => {
