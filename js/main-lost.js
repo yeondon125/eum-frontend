@@ -1,4 +1,4 @@
-fetch("https://gsm-eum.p-e.kr/main/lostitem")
+fetch("https://gsm-eum.p-e.kr/main")
   .then((response) => {
     console.log("응답 상태:", response.status);
     return response.json();
@@ -8,7 +8,7 @@ fetch("https://gsm-eum.p-e.kr/main/lostitem")
 
     const lostCard = document.getElementById("lost-row");
     if (!lostCard) {
-      console.error(" 'lost' 클래스를 가진 요소가 없습니다.");
+      console.error("'lost' 클래스를 가진 요소가 없습니다.");
       return;
     }
 
