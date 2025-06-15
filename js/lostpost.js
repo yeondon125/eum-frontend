@@ -22,7 +22,7 @@ fetch(`https://gsm-eum.p-e.kr/lostitem/view/${id}`)
     // 이미지
     const img = document.getElementById("preview");
     if (img) {
-      img.src = post.imageUrl || "https://via.placeholder.com/200";
+      img.src = post.imageUrl || "";
       img.style.display = "block";
     }
 
