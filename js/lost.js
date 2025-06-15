@@ -30,13 +30,24 @@ document.addEventListener("DOMContentLoaded", function () {
         token: token,
       }),
     })
-      .then((res) => {
+      .then(async (res) => {
         if (!res.ok) {
-          // 응답 상태 코드가 200대가 아닐 경우 오류 처리
           throw new Error("서버 응답 오류: " + res.status);
         }
-        return res.json(); // 응답 데이터를 JSON 객체로 변환
+
+        const text = await res.text();
+        if (!text.trim()) {
+          return {};
+        }
+
+        try {
+          return JSON.parse(text);
+        } catch (e) {
+          console.warn("JSON 파싱 실패. 원시 응답:", text);
+          return {};
+        }
       })
+
       // JSON 변환된 데이터가 여기로 전달됨
       .then((data) => {
         alert("등록 성공!"); // 사용자에게 성공 알림
