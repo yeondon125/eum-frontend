@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // 응답 상태 코드가 200대가 아닐 경우 오류 처리
           throw new Error("서버 응답 오류: " + res.status);
         }
-        return res.json(); // 응답 데이터를 JSON 객체로 변환
+        // return res.json(); // 응답 데이터를 JSON 객체로 변환
       })
       // JSON 변환된 데이터가 여기로 전달됨
       .then((data) => {
