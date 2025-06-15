@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("btn");
   let base64Image = ""; // 변환된 base64 문자열이 들어갈 변수
   //버튼 클릭시 api 전송
   const token = localStorage.getItem("token");
@@ -52,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .addEventListener("change", function (e) {
         const file = e.target.files[0];
         const preview = document.getElementById("preview");
-        const btn = document.getElementById("btn");
 
         if (file) {
           const reader = new FileReader();
