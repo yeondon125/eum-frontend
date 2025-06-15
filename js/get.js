@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 상태 검사 (현재 버튼이 활성화된 상태인지?)
     if (!btn.classList.contains("btn-active")) return;
     // 여기서만 API 실행
-    fetch("https://gsm-eum.p-e.kr/getitem/post ", {
+    fetch("https://gsm-eum.p-e.kr/getitem/post", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
