@@ -10,6 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //버튼 클릭시 api 전송
   btn.addEventListener("click", function () {
+    if (!btn.classList.contains("btn-active")) return;
+
+    if (!base64Image || base64Image.trim() === "") {
+      alert("이미지를 첨부해주세요.");
+      return;
+    }
+
     // 상태 검사 (현재 버튼이 활성화된 상태인지?)
     if (!btn.classList.contains("btn-active")) return;
     // 여기서만 API 실행
@@ -19,11 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // title: input1.value,
-        // content: input2.value,
-        // tag: "안녕하세요",
-        // image: base64Image,
-
         lostitem_name: input1.value,
         lostitem_detail: input2.value,
         lostitem_url_image: base64Image,
@@ -78,9 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
             preview.style.display = "block";
           };
 
-          document.getElementById("btn").addEventListener("click", function () {
-            document.getElementById("bt").click();
-          });
+          // document.getElementById("btn").addEventListener("click", function () {
+          //   document.getElementById("bt").click();
+          // });
 
           reader.readAsDataURL(file);
         } else {
