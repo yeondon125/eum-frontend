@@ -16,7 +16,7 @@ fetch("https://gsm-eum.p-e.kr/main")
 
     data.lostitem.content.forEach((post) => {
       const card = document.createElement("div");
-      const id = psot.boardId;
+      const id = post.boardId;
       card.id = id;
       card.className = "card";
       card.innerHTML = `
