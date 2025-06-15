@@ -10,13 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //버튼 클릭시 api 전송
   btn.addEventListener("click", function () {
-    if (!btn.classList.contains("btn-active")) return;
-
-    if (!base64Image || base64Image.trim() === "") {
-      alert("이미지를 첨부해주세요.");
-      return;
-    }
-
     // 상태 검사 (현재 버튼이 활성화된 상태인지?)
     if (!btn.classList.contains("btn-active")) return;
     // 여기서만 API 실행
