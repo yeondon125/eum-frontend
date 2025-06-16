@@ -81,6 +81,140 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("처리 중 오류가 발생했습니다: " + error.message);
     }
   });
+  document.addEventListener("DOMContentLoaded", function () {
+    //글자 수 제한
+    const input1 = document.querySelector(".lostname input"); // 습득물명 input
+    const input2 = document.querySelector(".explanation textarea"); // 설명 textarea
+    const max1 = document.getElementById("max1");
+    const max2 = document.getElementById("max2");
+    let base64Image = ""; // 변환된 base64 문자열이 들어갈 변수
+    const btn = document.getElementById("btn");
+    const token = localStorage.getItem("token");
+
+    //버튼 클릭시 api 전송
+    btn.addEventListener("click", function () {
+      // 상태 검사 (현재 버튼이 활성화된 상태인지?)
+      if (!btn.classList.contains("btn-active")) return;
+      // 여기서만 API 실행
+      fetch("https://gsm-eum.p-e.kr/lostitem/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          lostitem_name: input1.value,
+          lostitem_detail: input2.value,
+          lostitem_url_image: base64Image,
+          token: token,
+        }),
+      })
+        .then(async (res) => {
+          if (!res.ok) {
+            throw new Error("서버 응답 오류: " + res.status);
+          }
+
+          const text = await res.text();
+          if (!text.trim()) {
+            return {};
+          }
+
+          try {
+            return JSON.parse(text);
+          } catch (e) {
+            console.warn("JSON 파싱 실패. 원시 응답:", text);
+            return {};
+          }
+        })
+
+        // JSON 변환된 데이터가 여기로 전달됨
+        .then((data) => {
+          alert("등록 성공!"); // 사용자에게 성공 알림
+          console.log("서버 응답:", data); // 콘솔에 응답 데이터 출력
+        })
+        .catch((err) => {
+          alert("서버와 연결할 수 없습니다. 다시 시도해주세요.");
+          console.error("API 오류:", err);
+        });
+    });
+
+    // 포토 클릭 시 파일 선택 {
+    document.getElementById("photo").addEventListener("click", function () {
+      document.getElementById("fileInput").click();
+      //}
+
+      //이미지 미리보기 {
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          const preview = document.getElementById("preview");
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              base64Image = event.target.result.replace(
+                /^data:image\/\w+;base64,/,
+                ""
+              );
+
+              preview.src = event.target.result;
+              preview.style.display = "block";
+              console.log("🖼️ 이미지 base64 시작:", base64Image.slice(0, 50));
+              console.log("🖼️ 이미지 base64 전체 길이:", base64Image.length);
+
+              // 파일 크기 로그
+              const fileSize = Math.round(file.size / 1024);
+              console.log("📸 파일 크기:", fileSize, "KB");
+              console.log("📸 base64 길이:", base64Image.length);
+            };
+            reader.readAsDataURL(file);
+          } else {
+            btn.classList.remove("btn-active");
+            btn.classList.add("btn");
+          }
+        });
+      //}
+    });
+
+    function checkInputs() {
+      // input1: 최대 32자
+      if (input1.value.trim().length >= 1 && input1.value.trim().length < 32) {
+        btn.classList.remove("btn");
+        btn.classList.add("btn-active");
+      } else if (input1.value.trim().length > 32) {
+        max1.classList.remove("max-on");
+        max1.classList.add("max");
+        input1.classList.add("input-active");
+        input1.value = input1.value.trim().slice(0, 32);
+        btn.classList.remove("btn-active");
+        btn.classList.add("btn");
+      } else {
+        max1.classList.remove("max");
+        max1.classList.add("max-on");
+        input1.classList.remove("input-active");
+        btn.classList.remove("btn-active");
+        btn.classList.add("btn");
+      }
+
+      // input2: 최대 192자
+      if (input2.value.trim().length > 192) {
+        max2.classList.remove("max-on");
+        max2.classList.add("max");
+        input2.value = input2.value.trim().slice(0, 192);
+        input2.classList.add("input-active");
+        btn.classList.remove("btn-active");
+        btn.classList.add("btn");
+      } else {
+        max2.classList.remove("max");
+        max2.classList.add("max-on");
+
+        input2.classList.remove("input-active");
+      }
+    }
+
+    //인풋 입력 인지시 함수실행
+    input1.addEventListener("input", checkInputs);
+    input2.addEventListener("input", checkInputs);
+  });
 
   // 포토 클릭 시 파일 선택 {
   document.getElementById("photo").addEventListener("click", function () {
