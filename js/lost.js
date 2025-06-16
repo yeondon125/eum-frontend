@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
           lostitem_name: input1.value.trim(),
           lostitem_detail: input2.value.trim(),
           // lostitem_url_image: imageUrl,
-          lostitem_url_image: "adsifge",
+          lostitem_url_image: null,
           token: token,
         }),
       });
