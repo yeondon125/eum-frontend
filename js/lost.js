@@ -12,25 +12,47 @@ document.addEventListener("DOMContentLoaded", function () {
   btn.addEventListener("click", function () {
     // 상태 검사 (현재 버튼이 활성화된 상태인지?)
     if (!btn.classList.contains("btn-active")) return;
+
+    // 로딩 상태 표시
+    btn.disabled = true;
+    btn.textContent = "전송 중...";
+
+    // 전송할 데이터 크기 확인
+    const dataToSend = {
+      lostitem_name: input1.value,
+      lostitem_detail: input2.value,
+      lostitem_url_image: base64Image,
+      token: token,
+    };
+
+    const jsonData = JSON.stringify(dataToSend);
+    const dataSize = Math.round(jsonData.length / 1024);
+
+    console.log("📤 전송할 데이터 크기:", dataSize, "KB");
+    console.log(
+      "📤 이미지 크기:",
+      Math.round((base64Image.length * 3) / 4 / 1024),
+      "KB"
+    );
+
     // 여기서만 API 실행
     fetch("https://gsm-eum.p-e.kr/lostitem/post", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        lostitem_name: input1.value,
-        lostitem_detail: input2.value,
-        lostitem_url_image: base64Image,
-        token: token,
-      }),
+      body: jsonData,
     })
       .then(async (res) => {
+        console.log("📡 서버 응답 상태:", res.status, res.statusText);
+
         if (!res.ok) {
           throw new Error("서버 응답 오류: " + res.status);
         }
 
         const text = await res.text();
+        console.log("📡 서버 응답 텍스트:", text);
+
         if (!text.trim()) {
           return {};
         }
@@ -45,12 +67,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // JSON 변환된 데이터가 여기로 전달됨
       .then((data) => {
+        console.log("✅ 전송 성공! 서버 응답:", data);
         alert("등록 성공!"); // 사용자에게 성공 알림
-        console.log("서버 응답:", data); // 콘솔에 응답 데이터 출력
       })
       .catch((err) => {
+        console.error("❌ 전송 실패:", err);
         alert("서버와 연결할 수 없습니다. 다시 시도해주세요.");
-        console.error("API 오류:", err);
+      })
+      .finally(() => {
+        // 로딩 상태 해제
+        btn.disabled = false;
+        btn.textContent = "등록";
       });
   });
 
@@ -66,60 +93,74 @@ document.addEventListener("DOMContentLoaded", function () {
         const file = e.target.files[0];
         const preview = document.getElementById("preview");
         if (file) {
+          // 파일 크기 체크 (5MB 제한)
+          if (file.size > 5 * 1024 * 1024) {
+            alert(
+              "파일 크기가 5MB를 초과합니다. 더 작은 이미지를 선택해주세요."
+            );
+            return;
+          }
+
           const reader = new FileReader();
           reader.onload = function (event) {
-            base64Image = event.target.result;
-            preview.src = event.target.result;
-            preview.style.display = "block";
-            reader.onload = function (event) {
-              const img = new Image();
-              img.onload = function () {
-                const canvas = document.createElement("canvas");
-                const ctx = canvas.getContext("2d");
+            const img = new Image();
+            img.onload = function () {
+              const canvas = document.createElement("canvas");
+              const ctx = canvas.getContext("2d");
 
-                // 리사이즈 기준 설정
-                let width = img.width;
-                let height = img.height;
-                const maxWidth = 800;
-                const maxHeight = 800;
+              // 리사이즈 기준 설정 (더 작게 조정)
+              let width = img.width;
+              let height = img.height;
+              const maxWidth = 600; // 800 -> 600으로 줄임
+              const maxHeight = 600; // 800 -> 600으로 줄임
 
-                // 비율 유지하면서 크기 제한
-                if (width > maxWidth || height > maxHeight) {
-                  if (width > height) {
-                    height = height * (maxWidth / width);
-                    width = maxWidth;
-                  } else {
-                    width = width * (maxHeight / height);
-                    height = maxHeight;
-                  }
+              // 비율 유지하면서 크기 제한
+              if (width > maxWidth || height > maxHeight) {
+                if (width > height) {
+                  height = height * (maxWidth / width);
+                  width = maxWidth;
+                } else {
+                  width = width * (maxHeight / height);
+                  height = maxHeight;
                 }
+              }
 
-                canvas.width = width;
-                canvas.height = height;
+              canvas.width = width;
+              canvas.height = height;
 
-                ctx.drawImage(img, 0, 0, width, height);
+              ctx.drawImage(img, 0, 0, width, height);
 
-                // 압축 품질 설정 (0.7 정도 적당)
-                const compressedBase64 = canvas.toDataURL("image/jpeg", 0.7);
-                base64Image = compressedBase64;
+              // 압축 품질을 더 낮게 설정 (0.5로 줄임)
+              const compressedBase64 = canvas.toDataURL("image/jpeg", 0.5);
+              base64Image = compressedBase64;
 
-                preview.src = compressedBase64;
-                preview.style.display = "block";
-              };
-              img.src = event.target.result;
+              preview.src = compressedBase64;
+              preview.style.display = "block";
+
+              // 압축 결과 로그
+              const originalSize = Math.round(file.size / 1024);
+              const compressedSize = Math.round(
+                (base64Image.length * 3) / 4 / 1024
+              );
+              const compressionRatio = Math.round(
+                (1 - compressedSize / originalSize) * 100
+              );
+
+              console.log("📸 원본 파일 크기:", originalSize, "KB");
+              console.log("📸 압축 후 크기:", compressedSize, "KB");
+              console.log("📸 압축률:", compressionRatio + "%");
+              console.log("📸 base64 길이:", base64Image.length);
+
+              // 사용자에게 압축 결과 알림
+              if (compressedSize > 500) {
+                // 500KB 이상이면 경고
+                alert(
+                  `이미지가 압축되었습니다.\n원본: ${originalSize}KB → 압축: ${compressedSize}KB\n압축률: ${compressionRatio}%`
+                );
+              }
             };
+            img.src = event.target.result;
           };
-          console.log("📸 base64 길이:", base64Image.length);
-          console.log(
-            "📸 base64 용량:",
-            Math.round((base64Image.length * 3) / 4 / 1024),
-            "KB"
-          );
-
-          // document.getElementById("btn").addEventListener("click", function () {
-          //   document.getElementById("bt").click();
-          // });
-
           reader.readAsDataURL(file);
         } else {
           btn.classList.remove("btn-active");
