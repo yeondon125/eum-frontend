@@ -19,11 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // title: input1.value,
-        // content: input2.value,
-        // tag: "안녕하세요",
-        // image: base64Image,
-
         lostitem_name: input1.value,
         lostitem_detail: input2.value,
         lostitem_url_image: base64Image,
