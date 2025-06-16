@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const input2 = document.querySelector(".explanation textarea"); // 설명 textarea
   const max1 = document.getElementById("max1");
   const max2 = document.getElementById("max2");
-  let base64Image = ""; // 변환된 base64 문자열이 들어갈 변수
+  let selectedFile = null;
   const btn = document.getElementById("btn");
   const token = localStorage.getItem("token");
 
@@ -13,22 +13,20 @@ document.addEventListener("DOMContentLoaded", function () {
     // 상태 검사 (현재 버튼이 활성화된 상태인지?)
     if (!btn.classList.contains("btn-active")) return;
 
-    const res = await fetch("", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        fileName: file.name,
-        fileType: file.type,
-      }),
-    });
-
-    const { uploadUrl, fileUrl } = await res.json();
-
-    await fetch(uploadUrl, {
-      method: "PUT",
-      headers: { "Content-Type": file.type },
-      body: file,
-    });
+    // const res = await fetch("", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     fileName: selectedFile.name,
+    //     fileType: selectedFile.type,
+    //   }),
+    // });
+    // const { uploadUrl, fileUrl } = await res.json();
+    // await fetch(uploadUrl, {
+    //   method: "PUT",
+    //   headers: { "Content-Type": selectedFile.type },
+    //   body: selectedFile,
+    // });
 
     // 여기서만 API 실행
     fetch("https://gsm-eum.p-e.kr/lostitem/post", {
@@ -39,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       body: JSON.stringify({
         lostitem_name: input1.value,
         lostitem_detail: input2.value,
-        lostitem_url_image: fileUrl,
+        // lostitem_url_image: selectedFile,
         token: token,
       }),
     })
@@ -83,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .getElementById("fileInput")
       .addEventListener("change", function (e) {
         const file = e.target.files[0];
+        selectedFile = file;
         const preview = document.getElementById("preview");
         if (file) {
           const reader = new FileReader();
