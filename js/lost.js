@@ -9,9 +9,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("token");
 
   //버튼 클릭시 api 전송
-  btn.addEventListener("click", function () {
+  btn.addEventListener("click", async function () {
     // 상태 검사 (현재 버튼이 활성화된 상태인지?)
     if (!btn.classList.contains("btn-active")) return;
+
+    const res = await fetch("", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fileName: file.name,
+        fileType: file.type,
+      }),
+    });
+
+    const { uploadUrl, fileUrl } = await res.json();
+
+    await fetch(uploadUrl, {
+      method: "PUT",
+      headers: { "Content-Type": file.type },
+      body: file,
+    });
+
     // 여기서만 API 실행
     fetch("https://gsm-eum.p-e.kr/lostitem/post", {
       method: "POST",
@@ -21,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       body: JSON.stringify({
         lostitem_name: input1.value,
         lostitem_detail: input2.value,
-        lostitem_url_image: base64Image,
+        lostitem_url_image: fileUrl,
         token: token,
       }),
     })
@@ -52,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("서버와 연결할 수 없습니다. 다시 시도해주세요.");
         console.error("API 오류:", err);
       });
+    window.location.href = "https://eum-frontend.vercel.app/main.html";
   });
 
   // 포토 클릭 시 파일 선택 {
@@ -68,20 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (file) {
           const reader = new FileReader();
           reader.onload = function (event) {
-            base64Image = event.target.result.replace(
-              /^data:image\/\w+;base64,/,
-              ""
-            );
-
             preview.src = event.target.result;
             preview.style.display = "block";
-            console.log("🖼️ 이미지 base64 시작:", base64Image.slice(0, 50));
-            console.log("🖼️ 이미지 base64 전체 길이:", base64Image.length);
-
-            // 파일 크기 로그
-            const fileSize = Math.round(file.size / 1024);
-            console.log("📸 파일 크기:", fileSize, "KB");
-            console.log("📸 base64 길이:", base64Image.length);
           };
           reader.readAsDataURL(file);
         } else {
