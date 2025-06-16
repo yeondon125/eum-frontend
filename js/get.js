@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        lostitem_name: input1.value,
-        lostitem_detail: input2.value,
-        lostitem_url_image: base64Image,
+        getitem_name: input1.value,
+        getitem_detail: input2.value,
+        getitem_url_image: base64Image,
         token: token,
       }),
     })
