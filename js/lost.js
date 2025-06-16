@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       body: JSON.stringify({
         lostitem_name: input1.value,
         lostitem_detail: input2.value,
-        // lostitem_url_image: selectedFile,
+        lostitem_url_image: selectedFile,
         token: token,
       }),
     })
