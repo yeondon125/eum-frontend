@@ -71,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
             base64Image = event.target.result;
             preview.src = event.target.result;
             preview.style.display = "block";
+            console.log("🖼️ 이미지 base64 시작:", base64Image.slice(0, 50));
+            console.log("🖼️ 이미지 base64 전체 길이:", base64Image.length);
 
             // 파일 크기 로그
             const fileSize = Math.round(file.size / 1024);
