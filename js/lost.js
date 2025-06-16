@@ -209,4 +209,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //인풋 입력 인지시 함수실행
   input1.addEventListener("input", checkInputs);
   input2.addEventListener("input", checkInputs);
+  console.log("📦 최종 전송 데이터 ↓↓↓");
+  console.log("🔤 제목(lostitem_name):", input1.value);
+  console.log("📝 설명(lostitem_detail):", input2.value);
+  console.log("🖼️ 이미지 base64 시작:", base64Image.slice(0, 30)); // 앞 30자
+  console.log("🖼️ 이미지 base64 전체 길이:", base64Image.length);
+  console.log("🔐 토큰:", token);
 });
