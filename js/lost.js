@@ -68,7 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (file) {
           const reader = new FileReader();
           reader.onload = function (event) {
-            base64Image = event.target.result;
+            base64Image = event.target.result.replace(
+              /^data:image\/\w+;base64,/,
+              ""
+            );
+
             preview.src = event.target.result;
             preview.style.display = "block";
             console.log("🖼️ 이미지 base64 시작:", base64Image.slice(0, 50));
