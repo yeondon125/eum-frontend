@@ -13,63 +13,73 @@ document.addEventListener("DOMContentLoaded", function () {
     // 상태 검사 (현재 버튼이 활성화된 상태인지?)
     if (!btn.classList.contains("btn-active")) return;
 
-    // const res = await fetch("", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     fileName: selectedFile.name,
-    //     fileType: selectedFile.type,
-    //   }),
-    // });
-    // const { uploadUrl, fileUrl } = await res.json();
-    // await fetch(uploadUrl, {
-    //   method: "PUT",
-    //   headers: { "Content-Type": selectedFile.type },
-    //   body: selectedFile,
-    // });
+    try {
+      let imageUrl = null; // 이미지 URL 변수
 
-    // 여기서만 API 실행
-    fetch("https://gsm-eum.p-e.kr/lostitem/post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        lostitem_name: input1.value,
-        lostitem_detail: input2.value,
-        lostitem_url_image: selectedFile,
-        token: token,
-      }),
-    })
-      .then(async (res) => {
+      // 사진이 선택된 경우에만 S3 업로드
+      if (selectedFile) {
+        console.log("사진 업로드 시작...");
+
+        // 1. S3 업로드 URL 요청
+        const res = await fetch("https://gsm-eum.p-e.kr/lostitem/makelink", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fileType: selectedFile.type,
+          }),
+        });
+
         if (!res.ok) {
-          throw new Error("서버 응답 오류: " + res.status);
+          throw new Error("S3 업로드 URL 요청 실패: " + res.status);
         }
 
-        const text = await res.text();
-        if (!text.trim()) {
-          return {};
+        const { uploadUrl, fileUrl } = await res.json();
+
+        // 2. S3에 파일 업로드
+        const uploadResponse = await fetch(uploadUrl, {
+          method: "PUT",
+          headers: { "Content-Type": selectedFile.type },
+          body: selectedFile,
+        });
+
+        if (!uploadResponse.ok) {
+          throw new Error("S3 업로드 실패: " + uploadResponse.status);
         }
 
-        try {
-          return JSON.parse(text);
-        } catch (e) {
-          console.warn("JSON 파싱 실패. 원시 응답:", text);
-          return {};
-        }
-      })
+        imageUrl = fileUrl; // S3 URL 저장
+        console.log("✅ S3 업로드 성공:", imageUrl);
+      } else {
+        console.log("📸 사진 없음 - 텍스트만 등록");
+      }
 
-      // JSON 변환된 데이터가 여기로 전달됨
-      .then((data) => {
-        alert("등록 성공!"); // 사용자에게 성공 알림
-        console.log("서버 응답:", data); // 콘솔에 응답 데이터 출력
-        // 성공 후에만 페이지 이동
-        window.location.href = "https://eum-frontend.vercel.app/main.html";
-      })
-      .catch((err) => {
-        alert("서버와 연결할 수 없습니다. 다시 시도해주세요.");
-        console.error("API 오류:", err);
+      // 3. 메인 API에 데이터 전송 (사진 있으면 URL, 없으면 null)
+      const apiResponse = await fetch("https://gsm-eum.p-e.kr/lostitem/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          lostitem_name: input1.value,
+          lostitem_detail: input2.value,
+          lostitem_url_image: imageUrl, // 사진이 있으면 URL, 없으면 null
+          token: token,
+        }),
       });
+
+      if (!apiResponse.ok) {
+        throw new Error("API 요청 실패: " + apiResponse.status);
+      }
+
+      const data = await apiResponse.json();
+      console.log("✅ API 요청 성공:", data);
+      alert("등록 성공!");
+
+      // 성공 후 페이지 이동
+      window.location.href = "https://eum-frontend.vercel.app/main.html";
+    } catch (error) {
+      console.error("❌ 오류 발생:", error);
+      alert("처리 중 오류가 발생했습니다: " + error.message);
+    }
   });
 
   // 포토 클릭 시 파일 선택 {
@@ -92,8 +102,9 @@ document.addEventListener("DOMContentLoaded", function () {
           };
           reader.readAsDataURL(file);
         } else {
-          btn.classList.remove("btn-active");
-          btn.classList.add("btn");
+          // 파일이 선택되지 않았을 때는 버튼 상태를 변경하지 않음
+          // (텍스트 입력으로도 등록 가능하므로)
+          preview.style.display = "none";
         }
       });
     //}
