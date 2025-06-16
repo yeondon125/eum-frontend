@@ -71,12 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
             base64Image = event.target.result;
             preview.src = event.target.result;
             preview.style.display = "block";
+
+            // 파일 크기 로그
+            const fileSize = Math.round(file.size / 1024);
+            console.log("📸 파일 크기:", fileSize, "KB");
+            console.log("📸 base64 길이:", base64Image.length);
           };
-
-          document.getElementById("btn").addEventListener("click", function () {
-            document.getElementById("bt").click();
-          });
-
           reader.readAsDataURL(file);
         } else {
           btn.classList.remove("btn-active");

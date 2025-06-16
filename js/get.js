@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   let base64Image = ""; // 변환된 base64 문자열이 들어갈 변수
+  const btn = document.getElementById("btn"); // 변수 선언을 위로 이동
+
   document.getElementById("fileInput").addEventListener("change", function (e) {
     const file = e.target.files[0];
     const preview = document.getElementById("preview");
@@ -7,24 +9,25 @@ document.addEventListener("DOMContentLoaded", function () {
     if (file) {
       const reader = new FileReader();
       reader.onload = function (event) {
-        preview.src = event.target.result;
         base64Image = event.target.result;
+        preview.src = event.target.result;
         preview.style.display = "block";
-      };
-      btn.classList.remove("btn");
-      btn.classList.add("btn-active");
-      document.getElementById("btn").addEventListener("click", function () {
-        document.getElementById("bt").click();
-      });
 
+        // 파일 크기 로그
+        const fileSize = Math.round(file.size / 1024);
+        console.log("📸 파일 크기:", fileSize, "KB");
+        console.log("📸 base64 길이:", base64Image.length);
+
+        // 버튼 활성화
+        btn.classList.remove("btn");
+        btn.classList.add("btn-active");
+      };
       reader.readAsDataURL(file);
     } else {
       btn.classList.remove("btn-active");
       btn.classList.add("btn");
     }
   });
-
-  const btn = document.getElementById("btn");
 
   //버튼 클릭시 api 전송
   const token = localStorage.getItem("token");
@@ -53,10 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       // JSON 변환된 데이터가 여기로 전달됨
       .then((data) => {
+        console.log("✅ 전송 성공! 서버 응답:", data);
         alert("등록 성공!"); // 사용자에게 성공 알림
         console.log("서버 응답:", data); // 콘솔에 응답 데이터 출력
       })
       .catch((err) => {
+        console.error("❌ 전송 실패:", err);
         alert("서버와 연결할 수 없습니다. 다시 시도해주세요.");
         console.error("API 오류:", err);
       });
