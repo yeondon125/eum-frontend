@@ -63,12 +63,13 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         alert("등록 성공!"); // 사용자에게 성공 알림
         console.log("서버 응답:", data); // 콘솔에 응답 데이터 출력
+        // 성공 후에만 페이지 이동
+        window.location.href = "https://eum-frontend.vercel.app/main.html";
       })
       .catch((err) => {
         alert("서버와 연결할 수 없습니다. 다시 시도해주세요.");
         console.error("API 오류:", err);
       });
-    window.location.href = "https://eum-frontend.vercel.app/main.html";
   });
 
   // 포토 클릭 시 파일 선택 {
