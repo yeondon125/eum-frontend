@@ -119,7 +119,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!apiRes.ok) throw new Error("API 전송 실패");
 
-      const data = await apiRes.json();
+      const text = await apiRes.text(); // 먼저 텍스트로 읽음
+      let data = {};
+      if (text.trim()) {
+        try {
+          data = JSON.parse(text); // JSON 파싱 시도
+        } catch (e) {
+          console.warn("⚠️ JSON 파싱 실패:", text);
+        }
+      } else {
+        console.log("ℹ️ 응답이 비어 있습니다 (204 No Content 등)");
+      }
       console.log("✅ 등록 성공:", data);
       alert("등록 성공!");
       window.location.href = "https://eum-frontend.vercel.app/main.html";
