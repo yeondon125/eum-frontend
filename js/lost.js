@@ -110,10 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          lostitem_name: input1.value.trim(),
+          // lostitem_name: input1.value.trim(),
+          lostitem_name: "안녕하세요",
           lostitem_detail: input2.value.trim(),
-          // lostitem_url_image: imageUrl,
-          lostitem_url_image: null,
+          lostitem_url_image: imageUrl,
           token: token,
         }),
       });
