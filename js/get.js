@@ -13,11 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
         preview.src = event.target.result;
         preview.style.display = "block";
 
-        // 파일 크기 로그
-        const fileSize = Math.round(file.size / 1024);
-        console.log("📸 파일 크기:", fileSize, "KB");
-        console.log("📸 base64 길이:", base64Image.length);
-
         // 버튼 활성화
         btn.classList.remove("btn");
         btn.classList.add("btn-active");
@@ -31,40 +26,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //버튼 클릭시 api 전송
   const token = localStorage.getItem("token");
-  btn.addEventListener("click", function () {
-    // 상태 검사 (현재 버튼이 활성화된 상태인지?)
+  // 여기서만 API 실행
+
+  btn.addEventListener("click", async function () {
     if (!btn.classList.contains("btn-active")) return;
-    // 여기서만 API 실행
-    fetch("https://gsm-eum.p-e.kr/getitem/post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        getitem_name: input1.value,
-        getitem_detail: input2.value,
-        getitem_url_image: base64Image,
-        token: token,
-      }),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          // 응답 상태 코드가 200대가 아닐 경우 오류 처리
-          throw new Error("서버 응답 오류: " + res.status);
-        }
-        // return res.json(); // 응답 데이터를 JSON 객체로 변환
-      })
-      // JSON 변환된 데이터가 여기로 전달됨
-      .then((data) => {
-        console.log("✅ 전송 성공! 서버 응답:", data);
-        alert("등록 성공!"); // 사용자에게 성공 알림
-        console.log("서버 응답:", data); // 콘솔에 응답 데이터 출력
-      })
-      .catch((err) => {
-        console.error("❌ 전송 실패:", err);
-        alert("서버와 연결할 수 없습니다. 다시 시도해주세요.");
-        console.error("API 오류:", err);
+
+    try {
+      let imageUrl = "";
+
+      if (selectedFile) {
+        // 1. S3 업로드 URL 요청
+        const res = await fetch("https://gsm-eum.p-e.kr/lostitem/makelink", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ fileType: selectedFile.type }),
+        });
+
+        if (!res.ok) throw new Error("S3 URL 요청 실패");
+
+        const { uploadUrl, fileUrl } = await res.json();
+
+        // 2. 실제 파일 PUT 요청
+        const uploadRes = await fetch(uploadUrl, {
+          method: "PUT",
+          headers: { "Content-Type": selectedFile.type },
+          body: selectedFile,
+        });
+
+        if (!uploadRes.ok) throw new Error("S3 업로드 실패");
+
+        imageUrl = fileUrl;
+        console.log("✅ S3 업로드 성공:", imageUrl);
+      } else {
+        console.log("📸 사진 없음 - 텍스트만 등록");
+      }
+
+      // 3. 메인 API 전송
+      const apiRes = await fetch("https://gsm-eum.p-e.kr/getitem/post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          getitem_name: input1.value.trim(),
+          getitem_detail: input2.value.trim(),
+          getitem_url_image: imageUrl,
+          token: token,
+        }),
       });
+
+      if (!apiRes.ok) throw new Error("API 전송 실패");
+
+      const text = await apiRes.text(); // 먼저 텍스트로 읽음
+      let data = {};
+      if (text.trim()) {
+        try {
+          data = JSON.parse(text); // JSON 파싱 시도
+        } catch (e) {
+          console.warn("⚠️ JSON 파싱 실패:", text);
+        }
+      } else {
+        console.log("ℹ️ 응답이 비어 있습니다 (204 No Content 등)");
+      }
+      console.log("✅ 등록 성공:", data);
+      alert("등록 성공!");
+      window.location.href = "https://eum-frontend.vercel.app/main.html";
+    } catch (err) {
+      console.error("❌ 오류:", err);
+      alert("처리 중 오류 발생: " + err.message);
+    }
   });
 
   // 포토 클릭 시 파일 선택 {

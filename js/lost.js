@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const { uploadUrl, fileUrl } = await res.json();
 
         // 2. 실제 파일 PUT 요청
-        const uploadRes = await fetch(uploadUrl, {
+        const uploadRes = await fetch(madedUrl, {
           method: "PUT",
           headers: { "Content-Type": selectedFile.type },
           body: selectedFile,
