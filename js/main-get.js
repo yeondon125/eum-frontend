@@ -35,7 +35,7 @@ fetch("https://gsm-eum.p-e.kr/main")
         </div>`;
 
       card.addEventListener("click", () => {
-        window.location.href = `getpost.html?id=${id}`;
+        window.location.href = `mgetpost.html?id=${id}`;
       });
       lostCard.appendChild(card);
     });
