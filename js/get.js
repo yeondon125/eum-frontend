@@ -249,9 +249,9 @@ document.addEventListener("DOMContentLoaded", function () {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          lostitem_name: input1.value.trim(),
-          lostitem_detail: input2.value.trim(),
-          lostitem_url_image: imageUrl,
+          getitem_name: input1.value.trim(),
+          getitem_detail: input2.value.trim(),
+          getitem_url_image: imageUrl,
           token: token,
         }),
       });
