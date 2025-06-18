@@ -206,6 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
         preview.src = base64Image;
         preview.style.display = "block";
       };
+      checkInput();
       reader.readAsDataURL(file);
     }
   });
@@ -279,7 +280,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ✅ 입력 감지
-  fileInput.addEventListener("input", checkInputs);
   input1.addEventListener("input", checkInputs);
   input2.addEventListener("input", checkInputs);
 });
