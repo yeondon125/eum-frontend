@@ -22,7 +22,7 @@ fetch("https://gsm-eum.p-e.kr/main")
       card.innerHTML = `
         <p class="label">분실물</p>
         <img
-          src="${post.postitem_url_image || ""}"
+          src="${post.lostitem_url_image || ""}"
           class="item-img"
         />
         <div class="info">
