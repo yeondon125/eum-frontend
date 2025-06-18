@@ -28,7 +28,7 @@ fetch("https://gsm-eum.p-e.kr/main")
           class="item-img"
         />
         <div class="info">
-          <p class="student"><img src="../icons/Vector.svg" alt="아이콘" /> ${
+          <p class="student"><img src="/images/person.svg" alt="아이콘" /> ${
             post.student_id || "학번없음"
           }|${post.student_name || "이름없음"}</p>
           <p class="name">${post.getitem_name || "제목 없음"}</p>
