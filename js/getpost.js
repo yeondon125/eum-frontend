@@ -14,7 +14,7 @@ fetch(`https://gsm-eum.p-e.kr/getitem/view/${id}`)
     // 3. 받아온 게시글 내용을 HTML에 표시
 
     // 작성자
-    document.getElementById("user-name").forEach((el) => {
+    document.querySelectorAll(".user-name").forEach((el) => {
       el.textContent =
         `${post.student_id}|${post.student_name}` || "작성자 없음";
     });
