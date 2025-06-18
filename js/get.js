@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // 3. 메인 API 전송
-      const apiRes = await fetch("https://gsm-eum.p-e.kr/gettitem/post", {
+      const apiRes = await fetch("https://gsm-eum.p-e.kr/getitem/post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
