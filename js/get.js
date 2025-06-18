@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (selectedFile) {
         // 1. S3 업로드 URL 요청
-        const res = await fetch("https://gsm-eum.p-e.kr/lostitem/makelink", {
+        const res = await fetch("https://gsm-eum.p-e.kr/getitem/makelink", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ fileType: selectedFile.type }),
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // 3. 메인 API 전송
-      const apiRes = await fetch("https://gsm-eum.p-e.kr/lostitem/post", {
+      const apiRes = await fetch("https://gsm-eum.p-e.kr/gettitem/post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
