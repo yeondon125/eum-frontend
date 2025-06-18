@@ -183,13 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
       input2.classList.remove("input-active");
       max2.classList.replace("max", "max-on");
     }
-
-    // 버튼 활성화 여부
-    if (name.length <= 32 && detail.length <= 192 && selectedFile) {
-      btn.classList.replace("btn", "btn-active");
-    } else {
-      btn.classList.replace("btn-active", "btn");
-    }
   }
 
   // ✅ 이미지 선택 및 base64 미리보기
@@ -206,11 +199,15 @@ document.addEventListener("DOMContentLoaded", function () {
         preview.src = base64Image;
         preview.style.display = "block";
       };
-      checkInput();
       reader.readAsDataURL(file);
     }
   });
-
+  // 버튼 활성화 여부
+  if (name.length <= 32 && detail.length <= 192 && selectedFile) {
+    btn.classList.replace("btn", "btn-active");
+  } else {
+    btn.classList.replace("btn-active", "btn");
+  }
   // ✅ POST 요청 처리 (S3 업로드 → 서버 전송)
   btn.addEventListener("click", async function () {
     if (!btn.classList.contains("btn-active")) return;
