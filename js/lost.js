@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!res.ok) throw new Error("S3 URL 요청 실패");
 
-        const { madedUrld, fileUrl } = await res.json();
+        const { madedUrl, fileUrl } = await res.json();
 
         // 2. 실제 파일 PUT 요청
         const uploadRes = await fetch(madedUrl, {
