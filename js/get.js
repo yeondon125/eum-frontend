@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 버튼 활성화 여부
-    if (name.length <= 32 && detail.length <= 192 && valid && selectedFile) {
+    if (name.length <= 32 && detail.length <= 192 && selectedFile) {
       btn.classList.replace("btn", "btn-active");
     } else {
       btn.classList.replace("btn-active", "btn");
