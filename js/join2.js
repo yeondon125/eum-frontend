@@ -84,36 +84,37 @@ document.addEventListener("DOMContentLoaded", function () {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("서버 오류");
+      if (response.status >= 200 && response.status < 300) {
+        const result = await response.json();
+        const token = result.token;
+
+        if (!token) {
+          alert("JWT 토큰이 응답에 없습니다");
+          return;
+        }
+
+        const payload = JSON.parse(atob(token.split(".")[1]));
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("student_name", payload.name);
+        localStorage.setItem("student_id", payload.sub);
+
+        console.log("JWT:", payload);
+
+        alert("회원가입 성공!");
+        alert(`
+          발급자 (iss): ${payload.iss}
+          학번 (sub): ${payload.sub}
+          이름 (name): ${payload.name}
+          발급일: ${new Date(payload.iat * 1000).toLocaleString()}
+          만료일: ${new Date(payload.exp * 1000).toLocaleString()}
+        `);
+
+        window.location.href = "http://127.0.0.1:5500/Eum로그인/login.html";
+      } else {
+        gi;
+        throw new Error("서버 오류: " + response.status);
       }
-
-      const result = await response.json();
-      const token = result.token;
-
-      if (!token) {
-        alert("JWT 토큰이 응답에 없습니다");
-        return;
-      }
-
-      const payload = JSON.parse(atob(token.split(".")[1]));
-
-      localStorage.setItem("token", token);
-      localStorage.setItem("student_name", payload.name);
-      localStorage.setItem("student_id", payload.sub);
-
-      console.log("JWT:", payload);
-
-      alert("회원가입 성공!");
-      alert(`
-      발급자 (iss): ${payload.iss}
-      학번 (sub): ${payload.sub}
-      이름 (name): ${payload.name}
-      발급일: ${new Date(payload.iat * 1000).toLocaleString()}
-      만료일: ${new Date(payload.exp * 1000).toLocaleString()}
-    `);
-
-      window.location.href = "https://eum-frontend.vercel.app/";
     } catch (error) {
       console.error("회원가입 실패:", error);
       alert("서버 요청 중 오류가 발생했습니다. 다시 시도해주세요");
