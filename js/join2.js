@@ -105,10 +105,10 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("student_id", payload.sub);
 
       alert("회원가입 성공!");
-      window.location.href = "https://eum-frontend.vercel.app/";}
-    // } catch (error) {
-    //   console.error("회원가입 실패:", error);
-    //   alert("서버 요청 중 오류가 발생했습니다. 다시 시도해주세요");
-    // }
+      window.location.href = "https://eum-frontend.vercel.app/";
+    } catch (error) {
+      console.error("회원가입 실패:", error);
+      alert("서버 요청 중 오류가 발생했습니다. 다시 시도해주세요");
+    }
   });
 });
