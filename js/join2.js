@@ -1,114 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-  const submitButton = document.querySelector(".submit-button");
-  const passwordError = document.getElementById("student-id-error");
-  const emailError = document.getElementById("email-error");
-  const togglePw = document.getElementById("togglePw");
+submitButton.addEventListener("click", async () => {
+  const name = localStorage.getItem("student_name");
+  const studentId = localStorage.getItem("student_id");
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
 
-  submitButton.disabled = true;
-  togglePw.src = "./images/eyeclose.svg";
+  try {
+    const response = await fetch("https://gsm-eum.p-e.kr/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        student_name: name,
+        student_id: studentId,
+        email: `${email}@gsm.hs.kr`,
+        password: password,
+      }),
+    });
 
-  togglePw.addEventListener("click", function () {
-    const isPassword = passwordInput.type === "password";
-    passwordInput.type = isPassword ? "text" : "password";
-    togglePw.src = isPassword
-      ? "./images/eyeopen.svg"
-      : "./images/eyeclose.svg";
-  });
-
-  function validateInputs() {
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    const isEmailFilled = email !== "";
-    const isPasswordFilled = password !== "";
-
-    const emailValid = /^s2[0-9a-zA-Z]+$/.test(email);
-    const passwordValid =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[~?!@$])[A-Za-z\d~?!@$]{8,20}$/.test(
-        password
-      );
-
-    if (isEmailFilled && !emailValid) {
-      emailInput.classList.add("input-error");
-      emailError.classList.add("show");
-      emailError.style.opacity = "1";
-    } else {
-      emailInput.classList.remove("input-error");
-      emailError.classList.remove("show");
-      emailError.style.opacity = "0";
+    // 상태코드 확인만 남기고, 응답 파싱 제거
+    if (!response.ok) {
+      throw new Error("회원가입 실패: " + response.status);
     }
 
-    if (isPasswordFilled && !passwordValid) {
-      passwordInput.classList.add("input-error");
-      passwordError.classList.add("show");
-      passwordError.style.opacity = "1";
-    } else {
-      passwordInput.classList.remove("input-error");
-      passwordError.classList.remove("show");
-      passwordError.style.opacity = "0";
-    }
-
-    submitButton.disabled = !(
-      isEmailFilled &&
-      emailValid &&
-      isPasswordFilled &&
-      passwordValid
-    );
+    // ✅ 성공 처리
+    alert("회원가입 성공!");
+    window.location.href = "http://127.0.0.1:5500/Eum로그인/login.html";
+  } catch (error) {
+    console.error("회원가입 실패:", error);
+    alert("서버 요청 중 오류가 발생했습니다. 다시 시도해주세요");
   }
-
-  emailInput.addEventListener("input", validateInputs);
-  passwordInput.addEventListener("input", validateInputs);
-  validateInputs();
-
-  submitButton.addEventListener("click", async () => {
-    const name = localStorage.getItem("student_name");
-    const studentId = localStorage.getItem("student_id");
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    try {
-      const response = await fetch("https://gsm-eum.p-e.kr/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          student_name: name,
-          student_id: studentId,
-          email: `${email}@gsm.hs.kr`,
-          password: password,
-        }),
-      });
-
-      // if (!response.ok) {
-      //   throw new Error("회원가입 실패: " + response.status);
-      // }
-
-      // const text = await response.text();
-      // let result = {};
-
-      // if (text.trim().startsWith("{")) {
-      //   try {
-      //     result = JSON.parse(text);
-      //   } catch (e) {
-      //     console.warn("⚠ JSON 파싱 실패:", text);
-      //   }
-      // } else {
-      //   console.warn("⚠ 서버가 JSON 아닌 문자열을 반환:", text);
-      // }
-
-      const payload = JSON.parse(atob(token.split(".")[1]));
-      localStorage.setItem("token", token);
-      localStorage.setItem("student_name", payload.name);
-      localStorage.setItem("student_id", payload.sub);
-
-      alert("회원가입 성공!");
-      window.location.href = "https://eum-frontend.vercel.app/";
-    } catch (error) {
-      console.error("회원가입 실패:", error);
-      alert("서버 요청 중 오류가 발생했습니다. 다시 시도해주세요");
-    }
-  });
 });
