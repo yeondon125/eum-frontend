@@ -1,4 +1,4 @@
-doment.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
   const submitButton = document.querySelector(".submit-button");
@@ -84,14 +84,13 @@ doment.addEventListener("DOMContentLoaded", function () {
       });
 
       // 상태코드 확인만 남기고, 응답 파싱 제거
-      if (!response.ok && response.status == 402) {
-        throw new Error(response.message);
-      } else {
-        throw new Error(response.message);
+      if (!response.ok) {
+        alert(result.message); // ❗ 실패 시 메시지만 출력
+        throw new Error(result.message);
       }
 
       // ✅ 성공 처리
-      alert("회원가입 성공!");
+      alert(result.message); // 예: "회원가입 성공!"
       window.location.href = "https://eum-frontend.vercel.app/";
     } catch (error) {
       console.error("회원가입 실패:", error);
