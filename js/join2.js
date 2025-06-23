@@ -82,14 +82,15 @@ document.addEventListener("DOMContentLoaded", function () {
           password: password,
         }),
       });
-
+      const result = await response.json();
       // 상태코드 확인만 남기고, 응답 파싱 제거
       if (!response.ok) {
         alert(result.message); // ❗ 실패 시 메시지만 출력
+        console.error("회원가입 실패:", result.message, response.status);
         throw new Error(result.message);
-        console.error("회원가입 실패:", result.message, response.status); // ❗ 실패 시 오류 메시지 출력
+        // ❗ 실패 시 오류 메시지 출력
       } else {
-        console.log("회원가입 실패:", result.message, response.status); // ❗ 실패 시 오류 메시지 출력
+        console.log("회원가입 성공:", result.message, response.status);
       }
 
       // ✅ 성공 처리
