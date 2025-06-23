@@ -87,6 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!response.ok) {
         alert(result.message); // ❗ 실패 시 메시지만 출력
         throw new Error(result.message);
+        console.error("회원가입 실패:", result.message, response.status); // ❗ 실패 시 오류 메시지 출력
+      } else {
+        console.error("회원가입 실패:", result.message, response.status); // ❗ 실패 시 오류 메시지 출력
       }
 
       // ✅ 성공 처리
