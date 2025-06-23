@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         throw new Error(result.message);
         console.error("회원가입 실패:", result.message, response.status); // ❗ 실패 시 오류 메시지 출력
       } else {
-        console.error("회원가입 실패:", result.message, response.status); // ❗ 실패 시 오류 메시지 출력
+        console.log("회원가입 실패:", result.message, response.status); // ❗ 실패 시 오류 메시지 출력
       }
 
       // ✅ 성공 처리
@@ -97,7 +97,10 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "https://eum-frontend.vercel.app/";
     } catch (error) {
       console.error("회원가입 실패:", error);
-      alert("서버 요청 중 오류가 발생했습니다. 다시 시도해주세요");
+      alert(
+        "서버 요청 중 오류가 발생했습니다. 다시 시도해주세요",
+        result.message
+      );
     }
   });
 });
